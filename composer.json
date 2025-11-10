@@ -1,0 +1,13 @@
+{
+  "name": "yourname/fcl-behavior-automation",
+  "description": "Behavior-based modals/banners using FCL in WordPress.",
+  "type": "wordpress-plugin",
+  "require": {
+    "infobipcth/forms-computed-language": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "FCLBA\\": "inc/"
+    }
+  }
+}
