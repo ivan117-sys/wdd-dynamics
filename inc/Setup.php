@@ -11,9 +11,10 @@ class Setup
 
   public static function register_options()
   {
-    // options: FCL kod + toggleovi
-    register_setting('ma_settings', 'ma_fcl_code');     // FCL pravila
-    register_setting('ma_settings', 'ma_enable_modal'); // bool
-    register_setting('ma_settings', 'ma_enable_banner'); // bool
+    register_setting('ma_settings', 'ma_fcl_code');
+    register_setting('ma_settings', 'ma_enable_modal');
+    register_setting('ma_settings', 'ma_enable_banner');
+    register_setting('ma_settings', 'ma_banner_text');
+    register_setting('ma_settings', 'ma_banner_link');
   }
 }

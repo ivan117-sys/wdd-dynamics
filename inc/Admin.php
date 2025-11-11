@@ -12,13 +12,13 @@ class Admin
   public static function menu(): void
   {
     add_menu_page(
-      'WDD Dynamics',         // Page title (naslov u browseru)
-      'WDD Dynamics',         // Naziv u meniju
-      'manage_options',       // Capability
-      'wdd-dynamics',          // Slug
-      [__CLASS__, 'render'],    // Callback funkcija
-      'dashicons-chart-area',   // Ikona (WordPress built-in)
-      25                        // Pozicija u meniju (npr. ispod "Comments")
+      'WDD Dynamics',
+      'WDD Dynamics',
+      'manage_options',
+      'wdd-dynamics',
+      [__CLASS__, 'render'],
+      'dashicons-chart-area',
+      25
     );
   }
 
@@ -39,12 +39,33 @@ class Admin
             </td>
           </tr>
           <tr>
-            <th scope="row">Enable modal</th>
-            <td><input type="checkbox" name="ma_enable_modal" value="1" <?php checked(get_option('ma_enable_modal'), 1); ?>></td>
+            <th scope="row">Omogući modal</th>
+            <td>
+              <input type="checkbox" name="ma_enable_modal" value="1" <?php checked(get_option('ma_enable_modal'), 1); ?>>
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Omogući banner</th>
+            <td>
+              <input type="checkbox" name="ma_enable_banner" value="1" <?php checked(get_option('ma_enable_banner'), 1); ?>>
+            </td>
           </tr>
           <tr>
-            <th scope="row">Enable banner</th>
-            <td><input type="checkbox" name="ma_enable_banner" value="1" <?php checked(get_option('ma_enable_banner'), 1); ?>></td>
+            <th scope="row">Tekst bannera</th>
+            <td>
+              <input type="text" name="ma_banner_text" value="<?php echo esc_attr(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari 10% popusta danas!'))  ?>">
+              <p>
+                Tekst koji se prikazuje na banneru
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Link bannera</th>
+            <td>
+              <input type="text" name="ma_banner_link" value="<?php echo esc_attr(get_option('ma_banner_link', '/shop')); ?>" class="regular-text code">
+              <p class="description">Link od stranice na koji vodi banner.</p>
+            </td>
           </tr>
         </table>
         <?php submit_button(); ?>

@@ -1,11 +1,16 @@
-<div class="ma-modal" role="dialog" aria-modal="true">
-  <div class="ma-modal__card">
-    <span class="ma-close" aria-label="Close">&times;</span>
-    <h3>Pridruži se newsletteru</h3>
-    <p>Dobij novosti i ponude — prijavi se ispod.</p>
-    <form>
-      <input type="email" placeholder="tvoj@email.com" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:8px;">
-      <button type="submit" style="padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:none">Prijavi me</button>
-    </form>
+<?php
+$banner_link = esc_url(get_option('ma_banner_link', '/shop'));
+$banner_text = esc_html(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari 10% popusta danas!'));
+
+?>
+
+<div class="ma-banner">
+  <div class="ma-banner__text">
+    <a class="banner-link" href="<?php echo $banner_link; ?>">
+      <span> <?php echo $banner_text ?> <span> → </span>
+    </a>
+  </div>
+  <div>
+    <button class="ma-banner__close" aria-label="Zatvori">&times;</button>
   </div>
 </div>

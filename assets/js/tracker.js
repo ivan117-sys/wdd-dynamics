@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let clicks = 0;
   const start = Date.now();
+  const bannerCloseButton = document.querySelector('.ma-banner__close');
+
+  if (bannerCloseButton) 
+    {
+      bannerCloseButton.addEventListener('click', () => {
+      document.querySelector('.ma-banner').remove();
+    });
+    }
 
   document.addEventListener('click', () => clicks++);
 
@@ -17,33 +25,60 @@ document.addEventListener('DOMContentLoaded', () => {
     return await res.json();
   }
 
+
    function showModal() {
     if (document.querySelector('.ma-modal')) return; 
     const html = `
-      <div class="ma-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999">
-        <div style="background:#fff;padding:24px;border-radius:12px;max-width:480px;width:90%">
-          <button class="ma-close" style="float:right;font-size:20px">&times;</button>
-          <h3>Pridruži se newsletteru</h3>
-          <p>Dobij novosti i ponude — prijavi se ispod.</p>
-          <form>
-            <input type="email" placeholder="tvoj@email.com" required style="width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:8px;">
-            <button type="submit" style="padding:10px 16px;border-radius:8px;background:#111;color:#fff;border:none">Prijavi me</button>
+     <div class="ma-modal" role="dialog" aria-modal="true">
+        <div class="ma-modal__card">
+          <button class="ma-modal__close" aria-label="Zatvori">&times;</button>
+          <h3 class="ma-modal__title">Pridruži se newsletteru</h3>
+          <p class="ma-modal__text">Dobij novosti i ponude — prijavi se ispod.</p>
+          <form class="ma-modal__form">
+            <input type="email" class="ma-modal__input" placeholder="tvoj@email.com" required>
+            <button type="submit" class="ma-modal__button">Prijavi me</button>
           </form>
         </div>
       </div>`;
+
     document.body.insertAdjacentHTML('beforeend', html);
-    document.querySelector('.ma-close').addEventListener('click', () => {
-      document.querySelector('.ma-modal').remove();
+
+    const modal = document.querySelector('.ma-modal');
+
+    modal.classList.add('ma-modal--active');
+    document.body.style.overflow = 'hidden';
+
+    modal.addEventListener('click', (e) => {
+      if (e.target.classList.contains('ma-modal') || e.target.classList.contains('ma-modal__close')) {
+        modal.remove();
+        document.body.style.overflow = '';
+      }
     });
   }
 
   function showBanner() {
     if (document.querySelector('.ma-banner')) return;
+
+    const text = MA.bannerText || ''; 
+    const link = MA.bannerLink || ''; 
+
     const html = `
-      <div class="ma-banner" style="position:fixed;bottom:16px;left:16px;right:16px;background:#111;color:#fff;padding:12px 16px;border-radius:10px;z-index:9998">
-        <strong>Specijalna ponuda:</strong> Ostvari 10% popusta danas! <a href="/shop" style="color:#fff;text-decoration:underline">Kupi sada →</a>
-      </div>`;
+      <div class="ma-banner ma-banner--active">
+        <div class="ma-banner__text">
+        <a class="banner-link" href="${link}">
+          <span>${text}</span> <span> → </span>    
+          </a>
+        </div>
+        <button class="ma-banner__close" aria-label="Zatvori">&times;</button>
+      </div>
+      `;
     document.body.insertAdjacentHTML('beforeend', html);
+
+    const bannerCloseButtonAjax = document.querySelector('.ma-banner__close');
+
+    bannerCloseButtonAjax.addEventListener('click', () => {
+      document.querySelector('.ma-banner').remove();
+    });
   }
 
   async function sendEvaluateMetrics() {
@@ -79,9 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalAlreadyShown = null;
 
     async function handleMetricsCycle() {
-      console.log('fired');
       if (bannerAlreadyShown || modalAlreadyShown) return;
-      console.log('not returned'); 
+    
       await sendEvaluateMetrics();
   }
 

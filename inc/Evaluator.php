@@ -33,6 +33,8 @@ class Evaluator
       $lr->evaluate();
       $vars = $lr->getVars();
 
+      // var_dump($vars);
+
       return $vars['return'] ?? 'none';
     } catch (\Throwable $e) {
       error_log('FCL evaluation failed' . $e->getMessage());
