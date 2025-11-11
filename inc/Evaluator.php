@@ -30,10 +30,11 @@ class Evaluator
         'visits' => $visits
       ]);
 
+      $lr->setAllowedConstants(['true', 'false']);
+      $lr->setConstantBehaviour('whitelist');
+
       $lr->evaluate();
       $vars = $lr->getVars();
-
-      // var_dump($vars);
 
       return $vars['return'] ?? 'none';
     } catch (\Throwable $e) {
