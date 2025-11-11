@@ -16,9 +16,9 @@ require __DIR__ . '/inc/Setup.php';
 require __DIR__ . '/inc/Admin.php';
 require __DIR__ . '/inc/Rest.php';
 require __DIR__ . '/inc/Evaluator.php';
-// require __DIR__ . '/inc/Frontend.php';
+require __DIR__ . '/inc/Frontend.php';
 
 MarketingAutomation\Setup::init();
 MarketingAutomation\Admin::init();
 MarketingAutomation\Rest::init();
-// FCLBA\Frontend::init();
+MarketingAutomation\Frontend::init();

@@ -68,19 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       
     } catch (error) {
-         console.warn('FCL evaluation failed', err);
+         console.warn('FCL evaluation failed', error);
     }
   }
 
-  const bannerAlreadyShown = localStorage.getItem('ma_banner_shown');
-  const modalAlreadyShown = localStorage.getItem('ma_modal_shown');
+  // const bannerAlreadyShown = localStorage.getItem('ma_banner_shown');
+  // const modalAlreadyShown = localStorage.getItem('ma_modal_shown');
+
+    const bannerAlreadyShown = null;
+    const modalAlreadyShown = null;
 
     async function handleMetricsCycle() {
-      if (bannerAlreadyShown || modalAlreadyShown) return; 
+      console.log('fired');
+      if (bannerAlreadyShown || modalAlreadyShown) return;
+      console.log('not returned'); 
       await sendEvaluateMetrics();
   }
 
-  setTimeout(handleMetricsCycle, 1000);
+  setTimeout(handleMetricsCycle, 30000);
 
   window.addEventListener('beforeunload', handleMetricsCycle);
 

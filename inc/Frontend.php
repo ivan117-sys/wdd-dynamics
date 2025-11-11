@@ -7,6 +7,8 @@ class Frontend
   public static function init(): void
   {
     add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue']);
+    add_action('wp', [__CLASS__, 'count_visit_cookie']);
+    add_action('wp_footer', [__CLASS__, 'maybe_render_ui'], 100);
   }
 
   public static function enqueue(): void
@@ -27,7 +29,7 @@ class Frontend
 
   public static function count_visit_cookie(): void
   {
-    $visits = isset($_COOKIE['fclba_visits']) ? (int)$_COOKIE['fclba_visits'] + 1 : 1;
+    $visits = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] + 1 : 1;
     setcookie('ma_visits', (string)$visits, time() + YEAR_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
   }
 
