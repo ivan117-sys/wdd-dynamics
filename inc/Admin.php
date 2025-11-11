@@ -22,7 +22,7 @@ class Admin
     );
   }
 
-  public static function render()
+  public static function render(): void
   {
     if (!current_user_can('manage_options')) return;
 ?>
