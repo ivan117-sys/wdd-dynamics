@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalHeading = document.querySelector('.ma-modal__title');
   const modalText = document.querySelector('.ma-modal__text');
   const start = Date.now();
-  const banner = document.querySelector('.ma-banner');
-  const bannerCloseButton = document.querySelector('.ma-banner__close');
 
   let clicks = 0;
   document.addEventListener('click', () => clicks++);
@@ -53,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
           text.textContent = 'Uspješno si se prijavio/la na newsletter.'
 
       } else {
-          alert('Greška pri prijavi. Pokušaj ponovno.');
+          alert('Greška pri prijavi. Pokušajte ponovno.');
       }
 
       } catch (err) {
@@ -63,18 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }
 
-  // Modal 
-   if (modal && form) {
-      submitModalForm(form, modalHeading, modalText );
-
-      modal.addEventListener('click', (e) => {
-        if (e.target.classList.contains('ma-modal') || e.target.classList.contains('ma-modal__close')) {
-          modal.remove();
-          document.body.style.overflow = '';
-        }
-      });
-    }
-
+  // Modal
    function showModal() {
    
     if (document.querySelector('.ma-modal')) return; 
@@ -119,14 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Banner
-
-   if (bannerCloseButton) 
-    {
-      bannerCloseButton.addEventListener('click', () => {
-      if (banner) banner.remove();
-    });
-    }
-
   function showBanner() {
 
     if (document.querySelector('.ma-banner')) return;
@@ -157,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Ajax call to evaluate metrics
-
   async function sendEvaluateMetrics() {
     try {
 
