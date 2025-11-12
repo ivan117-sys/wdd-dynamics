@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if(!window.MA || !MA.rest) return;
 
+  if(!MA.enableModal && !MA.enableBanner) return;
+
   const form = document.querySelector('.ma-modal__form');
   const modal = document.querySelector('.ma-modal');
   const modalHeading = document.querySelector('.ma-modal__title');
@@ -81,9 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modalText = MA.modalText || ''; 
     const modalHeading = MA.modalHeading || ''; 
-
-    console.log(modalText);
-    console.log(modalHeading);
 
     const html = `
      <div class="ma-modal" role="dialog" aria-modal="true">
@@ -170,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!data || !data.decision) return;
 
-
         const canShowModal = shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7);
         const canShowBanner = shouldShowWithTTL('ma_banner_shown', MA.bannerTTL || 7);
 
@@ -180,44 +178,24 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (data.decision === 'show_newsletter_modal' && canShowModal) {
           showModal();
         }
-
       
     } catch (error) {
          console.warn('FCL evaluation failed', error);
     }
   }
 
-  sendEvaluateMetrics();
- 
+   sendEvaluateMetrics();
 
-    // const bannerAlreadyShown = localStorage.getItem('ma_banner_shown');
-    // const modalAlreadyShown = localStorage.getItem('ma_modal_shown');
-
-    // const bannerAlreadyShown = null;
-    // const modalAlreadyShown = null;
-
-    // Handling metrics on page load
-
-  //   async function handleMetricsCycle() {
-
-  //     const canShowBanner = shouldShowWithTTL('ma_banner_shown', MA.bannerTTL || 7);
-  //     const canShowModal  = shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7);
-
-  //     if (!canShowBanner && !canShowModal) return;
-    
-  //     await sendEvaluateMetrics();
-  // }
-
-  // handleMetricsCycle();
-
-  // Sending meausring data every 10s
-
+  //  Interval for data requuests
    setInterval(async () => {
 
-    const canSend = shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7) || shouldShowWithTTL('ma_banner_shown', MA.bannerTTL || 7);
-    if (!canSend) return; 
+    const canShowModal  = MA.enableModal  && shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7);
+    const canShowBanner = MA.enableBanner && shouldShowWithTTL('ma_banner_shown', MA.bannerTTL || 7);
+
+    if (!canShowModal && !canShowBanner) return;
 
     await sendEvaluateMetrics();
+
   }, 5000);
 
 })

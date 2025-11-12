@@ -65,7 +65,7 @@ class Admin
                     Odluke se automatski evaluiraju svakih <strong>5 sekundi</strong> na frontendu,
                     prema pravilima koja definirate ovdje.
                     <br>To znači da ako korisnik ispuni uvjete (npr. $clicks > 5),
-                    banner ili modal će se pojaviti unutar nekoliko sekundi.
+                    banner ili modal će se pojaviti unutar nekoliko sekundi. <br> Za promjenu FCL pravila ili bilo koje opcije kliknite plavi gumb "save changes" na dnu stranice.
                   </p>
 
                   <p><strong>Primjeri:</strong></p>
@@ -90,6 +90,22 @@ if ($clicks > 5) {
                     Ako se ništa ne treba prikazati, vratite <code>$return = 'none'</code>.
                   </p>
                 </td>
+              </tr>
+              <tr>
+                <th scope="row" colspan="2">
+                  <!-- <h2 style="margin-top:30px;"> Engine za odluke</h2> -->
+                  <p style="
+      background:#fffbea;
+      border-left:4px solid #ffcc00;
+      padding:12px;
+      margin-top:10px;
+      font-size:14px;
+    ">
+                    ⚠️ <strong>Napomena:</strong> Ako ne koristite <em>newsletter modal</em> ili <em>banner</em>,
+                    <strong>obavezno ih isključi</strong> u opcijama ispod.
+                    To će spriječiti nepotrebne pozive prema serveru i ubrzati web stranicu.
+                  </p>
+                </th>
               </tr>
             </table>
           </div>
@@ -120,6 +136,18 @@ if ($clicks > 5) {
                   <p>Tekst koji se prikazuje ispod naslova.</p>
                 </td>
               </tr>
+              <tr>
+                <th scope="row"><label for="ma_modal_ttl_days">Ponavljanje newslettera (TTL u danima)</label></th>
+                <td>
+                  <input
+                    type="number"
+                    id="ma_modal_ttl_days"
+                    name="ma_modal_ttl_days"
+                    value="<?php echo esc_attr(get_option('ma_modal_ttl_days', 7)); ?>"
+                    min="1"
+                    max="30" />
+                  <p class="description">Nakon što se modal jednom pojavio korisniku, koliko dana mora proći prije nego se modal ponovno pojavi?</p>
+                </td>
             </table>
           </div>
         </div>
@@ -147,6 +175,19 @@ if ($clicks > 5) {
                 <td>
                   <input type="text" name="ma_banner_link" value="<?php echo esc_attr(get_option('ma_banner_link', '/shop')); ?>" class="regular-text code">
                   <p class="description">Link na koji vodi klik na banner.</p>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"><label for="ma_banner_ttl_days">Ponavljanje bannera (TTL u danima)</label></th>
+                <td>
+                  <input
+                    type="number"
+                    id="ma_banner_ttl_days"
+                    name="ma_banner_ttl_days"
+                    value="<?php echo esc_attr(get_option('ma_banner_ttl_days', 7)); ?>"
+                    min="1"
+                    max="30" />
+                  <p class="description">Nakon što se banner jednom pojavio korisniku, koliko dana mora proći prije nego se banner ponovno pojavi?</p>
                 </td>
               </tr>
             </table>

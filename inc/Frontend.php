@@ -8,7 +8,7 @@ class Frontend
   {
     add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue']);
     add_action('wp', [__CLASS__, 'count_visit_cookie']);
-    // add_action('wp_footer', [__CLASS__, 'maybe_render_ui'], 100);
+    add_action('wp_footer', [__CLASS__, 'maybe_render_ui'], 100);
   }
 
   public static function enqueue(): void
@@ -36,6 +36,10 @@ class Frontend
       'bannerLink' => esc_url(get_option('ma_banner_link', '/shop')),
       'modalHeading' => esc_html(get_option('ma_modal_heading', 'Pridruži se newsletteru')),
       'modalText' => esc_html(get_option('ma_modal_text', 'Dobij novosti i ponude, prijavi se ispod!')),
+      'bannerTTL' => (int) get_option('ma_banner_ttl_days', 7),
+      'modalTTL' => (int) get_option('ma_modal_ttl_days', 7),
+      'enableModal' => (bool) get_option('ma_enable_modal'),
+      'enableBanner' => (bool) get_option('ma_enable_banner')
     ]);
   }
 
@@ -45,16 +49,17 @@ class Frontend
     setcookie('ma_visits', (string)$visits, time() + YEAR_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
   }
 
-  // public static function maybe_render_ui(): void
-  // {
-  //   $decision = Evaluator::decide();
 
-  //   if ($decision === 'show_newsletter_modal' && get_option('ma_enable_modal')) {
-  //     include __DIR__ . '/../templates/modal.php';
-  //   }
+  public static function maybe_render_ui(): void
+  {
+    $decision = Evaluator::decide();
 
-  //   if ($decision === 'show_discount_banner' && get_option('ma_enable_banner')) {
-  //     include __DIR__ . '/../templates/banner.php';
-  //   }
-  // }
+    if ($decision === 'show_newsletter_modal' && get_option('ma_enable_modal')) {
+      include __DIR__ . '/../templates/modal.php';
+    }
+
+    if ($decision === 'show_discount_banner' && get_option('ma_enable_banner')) {
+      include __DIR__ . '/../templates/banner.php';
+    }
+  }
 }

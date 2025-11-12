@@ -18,6 +18,16 @@ class Setup
     register_setting('ma_settings', 'ma_banner_link');
     register_setting('ma_settings', 'ma_modal_text');
     register_setting('ma_settings', 'ma_modal_heading');
+    register_setting('ma_settings', 'ma_banner_ttl_days', [
+      'type' => 'integer',
+      'default' => 7,
+      'sanitize_callback' => 'absint',
+    ]);
+    register_setting('ma_settings', 'ma_modal_ttl_days', [
+      'type' => 'integer',
+      'default' => 7,
+      'sanitize_callback' => 'absint',
+    ]);
   }
 
   public static function create_table(): void

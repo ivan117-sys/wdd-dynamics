@@ -4,7 +4,7 @@ $modal_text = esc_html(get_option('ma_modal_text', 'Dobij novosti i ponude, prij
 
 ?>
 
-<!-- <div class="ma-modal ma-modal--active" id="maModal" aria-modal="true">
+<div class="ma-modal ma-modal--active" id="maModal" aria-modal="true">
   <div class="ma-modal__card">
     <button class="ma-modal__close" aria-label="Zatvori">&times;</button>
     <h3 class="ma-modal__title"> <?php echo $modal_heading ?> </h3>
@@ -14,4 +14,4 @@ $modal_text = esc_html(get_option('ma_modal_text', 'Dobij novosti i ponude, prij
       <button type="submit">Prijavi me</button>
     </form>
   </div>
-</div> -->
+</div>
