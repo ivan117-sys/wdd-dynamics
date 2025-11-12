@@ -4,12 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if(!MA.enableModal && !MA.enableBanner) return;
 
-  const form = document.querySelector('.ma-modal__form');
-  const modal = document.querySelector('.ma-modal');
-  const modalHeading = document.querySelector('.ma-modal__title');
-  const modalText = document.querySelector('.ma-modal__text');
   const start = Date.now();
-
   let clicks = 0;
   document.addEventListener('click', () => clicks++);
 
