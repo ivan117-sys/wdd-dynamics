@@ -8,7 +8,6 @@ class Frontend
   {
     add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue']);
     add_action('wp', [__CLASS__, 'count_visit_cookie']);
-    add_action('wp_footer', [__CLASS__, 'maybe_render_ui'], 100);
   }
 
   public static function enqueue(): void
@@ -47,19 +46,5 @@ class Frontend
   {
     $visits = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] + 1 : 1;
     setcookie('ma_visits', (string)$visits, time() + YEAR_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
-  }
-
-
-  public static function maybe_render_ui(): void
-  {
-    $decision = Evaluator::decide();
-
-    if ($decision === 'show_newsletter_modal' && get_option('ma_enable_modal')) {
-      include __DIR__ . '/../templates/modal.php';
-    }
-
-    if ($decision === 'show_discount_banner' && get_option('ma_enable_banner')) {
-      include __DIR__ . '/../templates/banner.php';
-    }
   }
 }
