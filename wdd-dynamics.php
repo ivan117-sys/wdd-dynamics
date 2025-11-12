@@ -22,3 +22,5 @@ MarketingAutomation\Setup::init();
 MarketingAutomation\Admin::init();
 MarketingAutomation\Rest::init();
 MarketingAutomation\Frontend::init();
+
+register_activation_hook(__FILE__, [MarketingAutomation\Setup::class, 'create_table']);

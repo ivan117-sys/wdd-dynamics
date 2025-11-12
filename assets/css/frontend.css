@@ -1,4 +1,3 @@
-/* --- Modal Overlay --- */
 .ma-modal {
   position: fixed;
   inset: 0;
@@ -17,7 +16,6 @@
   pointer-events: auto;
 }
 
-/* --- Modal Card --- */
 .ma-modal__card {
   background: #fff;
   border-radius: 12px;
@@ -34,7 +32,11 @@
   transform: translateY(0);
 }
 
-/* --- Close Button --- */
+.ma-modal__title {
+  font-size: 1.6rem;
+  padding-bottom: 0.8rem;
+}
+
 .ma-modal__close {
   position: absolute;
   top: 10px;
@@ -46,9 +48,8 @@
   color: #333;
 }
 
-/* --- Newsletter Form --- */
 .ma-modal form input[type="email"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin-bottom: 12px;
   border: 1px solid #ddd;
@@ -59,18 +60,18 @@
 .ma-modal form button {
   background: #111;
   color: #fff;
-  padding: 10px 16px;
+  padding: 10px 24px;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   cursor: pointer;
+  margin-top: 0.2rem;
 }
 
 .ma-modal form button:hover {
   background: #333;
 }
 
-/* --- Banner --- */
 .ma-banner {
   position: fixed;
   bottom: 16px;
@@ -82,24 +83,24 @@
   border-radius: 10px;
   z-index: 9998;
   display: flex;
-  align-items: flex-start;  /* let text start at top if multiline */
+  align-items: flex-start;  
   justify-content: space-between;
   gap: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .ma-banner__text {
-  flex: 1 1 auto;            /* allow it to shrink and grow in flexbox */
-  min-width: 0;              /* critical for text wrapping inside flex */
-  white-space: normal;       /* allow text to wrap to new lines */
-  word-wrap: break-word;     /* break long words if needed */
-  overflow-wrap: anywhere;   /* break very long strings (URLs, etc.) */
+  flex: 1 1 auto;            
+  min-width: 0;              
+  white-space: normal;      
+  word-wrap: break-word;     
+  overflow-wrap: anywhere;   
 }
 
 .ma-banner a {
   color: #fff;
   font-weight: 600;
-  /* text-decoration: underline; */
+  
 }
 
 .ma-banner__close {

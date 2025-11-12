@@ -4,7 +4,7 @@ $banner_text = esc_html(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari
 
 ?>
 
-<div class="ma-banner">
+<!-- <div class="ma-banner">
   <div class="ma-banner__text">
     <a class="banner-link" href="<?php echo $banner_link; ?>">
       <span> <?php echo $banner_text ?> <span> → </span>
@@ -13,4 +13,4 @@ $banner_text = esc_html(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari
   <div>
     <button class="ma-banner__close" aria-label="Zatvori">&times;</button>
   </div>
-</div>
+</div> -->
