@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function shouldShowWithTTL(key, days = 7) {
-      const ttl = days * 24 * 60 * 60 * 1000; // 7 dana u milisekundama
+      const ttl = days * 24 * 60 * 60 * 1000; // days in miliseconds
       const lastShown = localStorage.getItem(key);
       const now = Date.now();
 
-      if (!lastShown) return true; // nikad nije prikazano
-      if (now - parseInt(lastShown, 10) > ttl) return true; // prošlo više od TTL
-      return false; // još nije prošlo 7 dana
+      if (!lastShown) return true; 
+      if (now - parseInt(lastShown, 10) > ttl) return true; 
+      return false; 
 }
 
   function submitModalForm(form, title, text) {
