@@ -61,6 +61,17 @@ class Frontend
 
     $visits = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] + 1 : 1;
 
-    setcookie('ma_visits', (string)$visits, time() + YEAR_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
+    setcookie(
+      'ma_visits',
+      (string)$visits,
+      [
+        'expires'  => time() + YEAR_IN_SECONDS,
+        'path'     => COOKIEPATH ?: '/',
+        'domain'   => COOKIE_DOMAIN,
+        'secure'   => is_ssl(),
+        'httponly' => true,
+        'samesite' => 'Lax',
+      ]
+    );
   }
 }

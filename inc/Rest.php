@@ -50,7 +50,18 @@ class Rest
       'visits'       => $visits
     ]);
 
-    setcookie('ma_metrics', $payload, time() + 3600, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
+    setcookie(
+      'ma_metrics',
+      $payload,
+      [
+        'expires'  => time() + 3600,
+        'path'     => COOKIEPATH ?: '/',
+        'domain'   => COOKIE_DOMAIN,
+        'secure'   => is_ssl(),
+        'httponly' => true,
+        'samesite' => 'Lax',
+      ]
+    );
 
     return rest_ensure_response(['ok' => true]);
   }
