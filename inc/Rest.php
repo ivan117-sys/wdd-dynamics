@@ -28,7 +28,7 @@ class Rest
     register_rest_route('ma/v1', '/track', [
       'methods'  => 'POST',
       'callback' => [__CLASS__, 'track'],
-      'permission_callback' => '__return_true', // za PoC; u produkciji dodaj nonce provjeru
+      'permission_callback' => '__return_true',
     ]);
     register_rest_route('ma/v1', '/evaluate', [
       'methods'  => 'POST',
