@@ -98,7 +98,6 @@ class Admin
 
                   <p><strong><?php esc_html_e('Primjeri:', 'wdd-marketing-dynamics'); ?></strong></p>
 
-                  <!-- Primjeri koda ostaju neprevedeni (Opcija A) -->
                   <pre style="background:#f9f9f9;border:1px solid #ddd;padding:10px;border-radius:6px;">
 // Ako je korisnik tek došao na stranicu → pokaži modal
 if ($time_on_page == 0) {
