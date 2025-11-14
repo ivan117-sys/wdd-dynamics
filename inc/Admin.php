@@ -30,8 +30,8 @@ class Admin
   public static function menu(): void
   {
     add_menu_page(
-      'WDD Dynamics',
-      'WDD Dynamics',
+      __('WDD Dynamics', 'wdd-marketing-dynamics'),
+      __('WDD Dynamics', 'wdd-marketing-dynamics'),
       'manage_options',
       'wdd-dynamics',
       [__CLASS__, 'render'],
@@ -45,52 +45,60 @@ class Admin
     if (!current_user_can('manage_options')) return;
 ?>
     <div class="wrap">
-      <h1 style="margin-bottom: 10px; font-weight: 600;">WDD Dynamics</h1>
+      <h1 style="margin-bottom: 10px; font-weight: 600;"><?php esc_html_e('WDD Dynamics', 'wdd-marketing-dynamics'); ?></h1>
+
       <form method="post" action="options.php">
         <?php settings_fields('ma_settings'); ?>
 
         <p class="description">
-          <strong style="margin-bottom:10px;">Varijable koje se mogu koristiti u pravilima:</strong><br>
-          <code>$time_on_page</code> — sekunde korisnika na stranici<br>
-          <code>$clicks</code> — broj klikova korisnika<br>
-          <code>$visits</code> — broj posjeta korisnika (sprema se u cookie)<br>
-          <code>$is_mobile</code> — Da li korisnik koristi desktop ili mobilni uređaj<br>
-          <code>$country</code> — Država iz koje je korisnik (Country code: 'HR', 'EN', 'DE', 'IT')
+          <strong style="margin-bottom:10px;"><?php esc_html_e('Varijable koje se mogu koristiti u pravilima:', 'wdd-marketing-dynamics'); ?></strong><br>
+          <code>$time_on_page</code> — <?php esc_html_e('sekunde korisnika na stranici', 'wdd-marketing-dynamics'); ?><br>
+          <code>$clicks</code> — <?php esc_html_e('broj klikova korisnika', 'wdd-marketing-dynamics'); ?><br>
+          <code>$visits</code> — <?php esc_html_e('broj posjeta korisnika (sprema se u cookie)', 'wdd-marketing-dynamics'); ?><br>
+          <code>$is_mobile</code> — <?php esc_html_e('Da li korisnik koristi desktop ili mobilni uređaj', 'wdd-marketing-dynamics'); ?><br>
+          <code>$country</code> — <?php esc_html_e("Država iz koje je korisnik (Country code: 'HR', 'EN', 'DE', 'IT')", 'wdd-marketing-dynamics'); ?>
         </p>
 
         <!-- Decision Engine -->
         <div class="postbox" style="margin-top:30px;">
-          <h2 class="hndle" style="margin-left:10px;"><span> Engine za odluke</span></h2>
+          <h2 class="hndle" style="margin-left:10px;"><span><?php esc_html_e('Engine za odluke', 'wdd-marketing-dynamics'); ?></span></h2>
           <div class="inside">
             <table class="form-table" role="presentation">
               <tr>
-                <th scope="row">FCL pravila</th>
+                <th scope="row"><?php esc_html_e('FCL pravila', 'wdd-marketing-dynamics'); ?></th>
                 <td>
 
                   <p>
-                    <label for="ma_fcl_examples"><strong>Brzi primjeri:</strong></label>
+                    <label for="ma_fcl_examples">
+                      <strong><?php esc_html_e('Brzi primjeri:', 'wdd-marketing-dynamics'); ?></strong>
+                    </label>
                     <select id="ma_fcl_examples" style="min-width:300px;">
-                      <option value="">— Odaberi primjer —</option>
-                      <option value="modal_10s">Prikaži modal nakon 10 sekundi</option>
-                      <option value="banner_5clicks">Prikaži banner nakon 5 klikova</option>
-                      <option value="banner_3visits">Prikaži banner nakon 3 posjeta</option>
-                      <option value="modal_mobile">Prikaži modal samo na mobitelu</option>
-                      <option value="banner_croatia">Prikaži banner samo za Hrvatsku</option>
+                      <option value=""><?php esc_html_e('— Odaberi primjer —', 'wdd-marketing-dynamics'); ?></option>
+                      <option value="modal_10s"><?php esc_html_e('Prikaži modal nakon 10 sekundi', 'wdd-marketing-dynamics'); ?></option>
+                      <option value="banner_5clicks"><?php esc_html_e('Prikaži banner nakon 5 klikova', 'wdd-marketing-dynamics'); ?></option>
+                      <option value="banner_3visits"><?php esc_html_e('Prikaži banner nakon 3 posjeta', 'wdd-marketing-dynamics'); ?></option>
+                      <option value="modal_mobile"><?php esc_html_e('Prikaži modal samo na mobitelu', 'wdd-marketing-dynamics'); ?></option>
+                      <option value="banner_croatia"><?php esc_html_e('Prikaži banner samo za Hrvatsku', 'wdd-marketing-dynamics'); ?></option>
                     </select>
                   </p>
 
                   <textarea name="ma_fcl_code" rows="12" style="width:100%;font-family:monospace;margin-top:10px;"><?php echo esc_textarea(get_option('ma_fcl_code', '')); ?></textarea>
 
                   <p class="description" style="margin-bottom: 20px;">
-                    Ovdje definirate kada se prikazuje <strong>banner</strong> ili <strong>newsletter modal</strong>.
-                    <br>Možete koristiti varijable: <code>$time_on_page</code>, <code>$clicks</code>, <code>$visits</code>, <code>$is_mobile</code>, <code>$country</code>.
-                    Odluke se automatski evaluiraju svakih <strong>5 sekundi</strong> na frontendu,
-                    prema pravilima koja definirate ovdje.
-                    <br>To znači da ako korisnik ispuni uvjete (npr. $clicks > 5),
-                    banner ili modal će se pojaviti unutar nekoliko sekundi. <br> Za promjenu FCL pravila ili bilo koje opcije kliknite plavi gumb "save changes" na dnu stranice.
+                    <?php esc_html_e('Ovdje definirate kada se prikazuje', 'wdd-marketing-dynamics'); ?>
+                    <strong><?php esc_html_e('banner', 'wdd-marketing-dynamics'); ?></strong>
+                    <?php esc_html_e('ili', 'wdd-marketing-dynamics'); ?>
+                    <strong><?php esc_html_e('newsletter modal', 'wdd-marketing-dynamics'); ?></strong>.
+                    <br><?php esc_html_e('Možete koristiti varijable:', 'wdd-marketing-dynamics'); ?>
+                    <code>$time_on_page</code>, <code>$clicks</code>, <code>$visits</code>, <code>$is_mobile</code>, <code>$country</code>.
+                    <br><?php esc_html_e('Odluke se automatski evaluiraju svakih 5 sekundi na frontendu, prema pravilima koja definirate ovdje.', 'wdd-marketing-dynamics'); ?>
+                    <br><?php esc_html_e('To znači da ako korisnik ispuni uvjete (npr. $clicks > 5), banner ili modal će se pojaviti unutar nekoliko sekundi.', 'wdd-marketing-dynamics'); ?>
+                    <br><?php esc_html_e('Za promjenu FCL pravila ili bilo koje opcije kliknite plavi gumb "save changes" na dnu stranice.', 'wdd-marketing-dynamics'); ?>
                   </p>
 
-                  <p><strong>Primjeri:</strong></p>
+                  <p><strong><?php esc_html_e('Primjeri:', 'wdd-marketing-dynamics'); ?></strong></p>
+
+                  <!-- Primjeri koda ostaju neprevedeni (Opcija A) -->
                   <pre style="background:#f9f9f9;border:1px solid #ddd;padding:10px;border-radius:6px;">
 // Ako je korisnik tek došao na stranicu → pokaži modal
 if ($time_on_page == 0) {
@@ -119,25 +127,32 @@ if ($country == "HR") {
 } else {
   $return = 'none';
 }
-                </pre>
+                  </pre>
 
                   <p class="description">
-                    Napišite <code>$return = 'show_newsletter_modal'</code> ili <code>$return = 'show_discount_banner'</code>.<br>
-                    Ako se ništa ne treba prikazati, vratite <code>$return = 'none'</code>.
+                    <?php esc_html_e('Napišite', 'wdd-marketing-dynamics'); ?> <code>$return = 'show_newsletter_modal'</code>
+                    <?php esc_html_e('ili', 'wdd-marketing-dynamics'); ?> <code>$return = 'show_discount_banner'</code>.<br>
+                    <?php esc_html_e('Ako se ništa ne treba prikazati, vratite', 'wdd-marketing-dynamics'); ?> <code>$return = 'none'</code>.
                   </p>
                 </td>
               </tr>
+
               <tr>
                 <th scope="row">
-                  <label for="ma_enable_country_detection">Omogući detekciju države (ipapi.co)</label>
+                  <label for="ma_enable_country_detection">
+                    <?php esc_html_e('Omogući detekciju države (ipapi.co)', 'wdd-marketing-dynamics'); ?>
+                  </label>
                 </th>
                 <td>
                   <label>
                     <input type="checkbox" id="ma_enable_country_detection" name="ma_enable_country_detection" value="1" <?php checked(get_option('ma_enable_country_detection'), 1); ?> />
-                    <span>Ova opcija šalje IP adresu korisnika servisu ipapi.co radi otkrivanja države.</span>
+                    <span><?php esc_html_e('Ova opcija šalje IP adresu korisnika servisu ipapi.co radi otkrivanja države.', 'wdd-marketing-dynamics'); ?></span>
                   </label>
                   <p class="description">
-                    Ako ovo isključiš, varijabla <code>$country</code> će imati vrijednost <code>'DISABLED'</code>.
+                    <?php esc_html_e("Ako ovo isključiš, varijabla", 'wdd-marketing-dynamics'); ?>
+                    <code>$country</code>
+                    <?php esc_html_e("će imati vrijednost", 'wdd-marketing-dynamics'); ?>
+                    <code>'DISABLED'</code>.
                   </p>
                 </td>
               </tr>
@@ -145,15 +160,14 @@ if ($country == "HR") {
               <tr>
                 <th scope="row" colspan="2">
                   <p style="
-      background:#fffbea;
-      border-left:4px solid #ffcc00;
-      padding:12px;
-      margin-top:10px;
-      font-size:14px;
-    ">
-                    ⚠️ <strong>Napomena:</strong> Ako ne koristite <em>newsletter modal</em> ili <em>banner</em>,
-                    <strong>obavezno ih isključi</strong> u opcijama ispod.
-                    To će spriječiti nepotrebne pozive prema serveru i ubrzati web stranicu.
+                    background:#fffbea;
+                    border-left:4px solid #ffcc00;
+                    padding:12px;
+                    margin-top:10px;
+                    font-size:14px;
+                  ">
+                    ⚠️ <strong><?php esc_html_e('Napomena:', 'wdd-marketing-dynamics'); ?></strong>
+                    <?php esc_html_e('Ako ne koristite newsletter modal ili banner, obavezno ih isključite u opcijama ispod. To će spriječiti nepotrebne pozive prema serveru i ubrzati web stranicu.', 'wdd-marketing-dynamics'); ?>
                   </p>
                 </th>
               </tr>
@@ -163,31 +177,43 @@ if ($country == "HR") {
 
         <!-- Newsletter Modal -->
         <div class="postbox" style="margin-top:30px;">
-          <h2 class="hndle" style="margin-left:10px;"><span> Newsletter modal</span></h2>
+          <h2 class="hndle" style="margin-left:10px;"><span><?php esc_html_e('Newsletter modal', 'wdd-marketing-dynamics'); ?></span></h2>
           <div class="inside">
             <table class="form-table" role="presentation">
               <tr>
-                <th scope="row">Omogući Newsletter modal</th>
+                <th scope="row"><?php esc_html_e('Omogući Newsletter modal', 'wdd-marketing-dynamics'); ?></th>
                 <td>
                   <input type="checkbox" name="ma_enable_modal" value="1" <?php checked(get_option('ma_enable_modal'), 1); ?>>
                 </td>
               </tr>
               <tr>
-                <th scope="row">Naslov za newsletter</th>
+                <th scope="row"><?php esc_html_e('Naslov za newsletter', 'wdd-marketing-dynamics'); ?></th>
                 <td>
-                  <input type="text" name="ma_modal_heading" value="<?php echo esc_attr(get_option('ma_modal_heading', 'Pridruži se newsletteru')); ?>" class="regular-text">
-                  <p>Naslov koji se prikazuje na newsletteru.</p>
+                  <input
+                    type="text"
+                    name="ma_modal_heading"
+                    value="<?php echo esc_attr(get_option('ma_modal_heading', __('Pridruži se newsletteru', 'wdd-marketing-dynamics'))); ?>"
+                    class="regular-text">
+                  <p><?php esc_html_e('Naslov koji se prikazuje na newsletteru.', 'wdd-marketing-dynamics'); ?></p>
                 </td>
               </tr>
               <tr>
-                <th scope="row">Tekst za newsletter</th>
+                <th scope="row"><?php esc_html_e('Tekst za newsletter', 'wdd-marketing-dynamics'); ?></th>
                 <td>
-                  <input type="text" name="ma_modal_text" value="<?php echo esc_attr(get_option('ma_modal_text', 'Dobij novosti i ponude, prijavi se ispod!')); ?>" class="regular-text">
-                  <p>Tekst koji se prikazuje ispod naslova.</p>
+                  <input
+                    type="text"
+                    name="ma_modal_text"
+                    value="<?php echo esc_attr(get_option('ma_modal_text', __('Dobij novosti i ponude, prijavi se ispod!', 'wdd-marketing-dynamics'))); ?>"
+                    class="regular-text">
+                  <p><?php esc_html_e('Tekst koji se prikazuje ispod naslova.', 'wdd-marketing-dynamics'); ?></p>
                 </td>
               </tr>
               <tr>
-                <th scope="row"><label for="ma_modal_ttl_days">Ponavljanje newslettera (TTL u danima)</label></th>
+                <th scope="row">
+                  <label for="ma_modal_ttl_days">
+                    <?php esc_html_e('Ponavljanje newslettera (TTL u danima)', 'wdd-marketing-dynamics'); ?>
+                  </label>
+                </th>
                 <td>
                   <input
                     type="number"
@@ -196,39 +222,56 @@ if ($country == "HR") {
                     value="<?php echo esc_attr(get_option('ma_modal_ttl_days', 7)); ?>"
                     min="1"
                     max="30" />
-                  <p class="description">Nakon što se modal jednom pojavio korisniku, koliko dana mora proći prije nego se modal ponovno pojavi?</p>
+                  <p class="description">
+                    <?php esc_html_e('Nakon što se modal jednom pojavio korisniku, koliko dana mora proći prije nego se modal ponovno pojavi?', 'wdd-marketing-dynamics'); ?>
+                  </p>
                 </td>
+              </tr>
             </table>
           </div>
         </div>
 
         <!-- Discount Banner -->
         <div class="postbox" style="margin-top:30px;">
-          <h2 class="hndle" style="margin-left:10px;"><span> Banner za popust</span></h2>
+          <h2 class="hndle" style="margin-left:10px;"><span><?php esc_html_e('Banner za popust', 'wdd-marketing-dynamics'); ?></span></h2>
           <div class="inside">
             <table class="form-table" role="presentation">
               <tr>
-                <th scope="row">Omogući banner za popust</th>
+                <th scope="row"><?php esc_html_e('Omogući banner za popust', 'wdd-marketing-dynamics'); ?></th>
                 <td>
                   <input type="checkbox" name="ma_enable_banner" value="1" <?php checked(get_option('ma_enable_banner'), 1); ?>>
                 </td>
               </tr>
               <tr>
-                <th scope="row">Tekst bannera</th>
+                <th scope="row"><?php esc_html_e('Tekst bannera', 'wdd-marketing-dynamics'); ?></th>
                 <td>
-                  <input type="text" name="ma_banner_text" value="<?php echo esc_attr(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari 10% popusta danas!')); ?>" class="regular-text">
-                  <p>Tekst koji se prikazuje u banneru.</p>
+                  <input
+                    type="text"
+                    name="ma_banner_text"
+                    value="<?php echo esc_attr(get_option('ma_banner_text', __('Specijalna ponuda: Ostvari 10% popusta danas!', 'wdd-marketing-dynamics'))); ?>"
+                    class="regular-text">
+                  <p><?php esc_html_e('Tekst koji se prikazuje u banneru.', 'wdd-marketing-dynamics'); ?></p>
                 </td>
               </tr>
               <tr>
-                <th scope="row">Link bannera</th>
+                <th scope="row"><?php esc_html_e('Link bannera', 'wdd-marketing-dynamics'); ?></th>
                 <td>
-                  <input type="text" name="ma_banner_link" value="<?php echo esc_attr(get_option('ma_banner_link', '/shop')); ?>" class="regular-text code">
-                  <p class="description">Link na koji vodi klik na banner.</p>
+                  <input
+                    type="text"
+                    name="ma_banner_link"
+                    value="<?php echo esc_attr(get_option('ma_banner_link', '/shop')); ?>"
+                    class="regular-text code">
+                  <p class="description">
+                    <?php esc_html_e('Link na koji vodi klik na banner.', 'wdd-marketing-dynamics'); ?>
+                  </p>
                 </td>
               </tr>
               <tr>
-                <th scope="row"><label for="ma_banner_ttl_days">Ponavljanje bannera (TTL u danima)</label></th>
+                <th scope="row">
+                  <label for="ma_banner_ttl_days">
+                    <?php esc_html_e('Ponavljanje bannera (TTL u danima)', 'wdd-marketing-dynamics'); ?>
+                  </label>
+                </th>
                 <td>
                   <input
                     type="number"
@@ -237,7 +280,9 @@ if ($country == "HR") {
                     value="<?php echo esc_attr(get_option('ma_banner_ttl_days', 7)); ?>"
                     min="1"
                     max="30" />
-                  <p class="description">Nakon što se banner jednom pojavio korisniku, koliko dana mora proći prije nego se banner ponovno pojavi?</p>
+                  <p class="description">
+                    <?php esc_html_e('Nakon što se banner jednom pojavio korisniku, koliko dana mora proći prije nego se banner ponovno pojavi?', 'wdd-marketing-dynamics'); ?>
+                  </p>
                 </td>
               </tr>
             </table>
@@ -252,15 +297,16 @@ if ($country == "HR") {
       global $wpdb;
       $subscribers = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}ma_subscribers ORDER BY created_at DESC LIMIT 50");
 
-      echo '<div class="postbox" style="margin-top:30px;"><h2 class="hndle" style="margin-left:10px;"><span> Pretplatnici na Newsletter</span></h2><div class="inside">';
+      echo '<div class="postbox" style="margin-top:30px;"><h2 class="hndle" style="margin-left:10px;"><span>' . esc_html__('Pretplatnici na Newsletter', 'wdd-marketing-dynamics') . '</span></h2><div class="inside">';
+
       if ($subscribers) {
-        echo '<table class="widefat striped fixed"><thead><tr><th>Email</th><th>Datum</th></tr></thead><tbody>';
+        echo '<table class="widefat striped fixed"><thead><tr><th>' . esc_html__('Email', 'wdd-marketing-dynamics') . '</th><th>' . esc_html__('Datum', 'wdd-marketing-dynamics') . '</th></tr></thead><tbody>';
         foreach ($subscribers as $s) {
           echo '<tr><td>' . esc_html($s->email) . '</td><td>' . esc_html($s->created_at) . '</td></tr>';
         }
         echo '</tbody></table>';
       } else {
-        echo '<p>Ovdje će se prikazati prijave na newsletter.</p>';
+        echo '<p>' . esc_html__('Ovdje će se prikazati prijave na newsletter.', 'wdd-marketing-dynamics') . '</p>';
       }
       echo '</div></div>';
       ?>

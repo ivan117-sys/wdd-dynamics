@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
    sendEvaluateMetrics();
 
-  //  Interval for data requuests
    setInterval(async () => {
 
     const canShowModal  = MA.enableModal  && shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7);

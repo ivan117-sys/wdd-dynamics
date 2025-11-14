@@ -6,6 +6,8 @@
  * Version: 1.0.0
  * Author: Ivan Mušković
  * License: GPLv2 or later
+ * Text Domain: wdd-marketing-dynamics
+ * Domain Path: /languages
  * Update URI: false
  */
 
@@ -41,3 +43,11 @@ if (function_exists('wp_add_privacy_policy_content')) {
     );
   });
 }
+
+add_action('plugins_loaded', function () {
+  load_plugin_textdomain(
+    'wdd-marketing-dynamics',
+    false,
+    dirname(plugin_basename(__FILE__)) . '/languages'
+  );
+});
