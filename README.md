@@ -134,7 +134,7 @@ Structure:
 
 ---
 
-## 🔌 REST API Endpoints
+##  REST API Endpoints
 
 All API routes are prefixed with:  
 `/wp-json/ma/v1`
