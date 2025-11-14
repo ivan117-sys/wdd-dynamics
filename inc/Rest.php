@@ -39,12 +39,12 @@ class Rest
     $clicks       = isset($data['clicks']) ? (int)$data['clicks'] : 0;
     $visits       = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] : 1;
 
-    // spremi u cookie simple JSON (1h)
     $payload = wp_json_encode([
       'time_on_page' => $time_on_page,
       'clicks'       => $clicks,
       'visits'       => $visits
     ]);
+
     setcookie('ma_metrics', $payload, time() + 3600, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
 
     return rest_ensure_response(['ok' => true]);

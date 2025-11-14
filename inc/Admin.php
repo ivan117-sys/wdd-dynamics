@@ -111,7 +111,6 @@ if ($country == "HR") {
               </tr>
               <tr>
                 <th scope="row" colspan="2">
-                  <!-- <h2 style="margin-top:30px;"> Engine za odluke</h2> -->
                   <p style="
       background:#fffbea;
       border-left:4px solid #ffcc00;

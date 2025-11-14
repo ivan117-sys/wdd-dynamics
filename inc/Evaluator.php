@@ -17,7 +17,6 @@ class Evaluator
       if (is_array($decoded)) $metrics = $decoded;
     }
 
-    // Number of visits
     $visits = isset($_COOKIE['ma_visits']) ? (int) $_COOKIE['ma_visits'] : 1;
 
     try {

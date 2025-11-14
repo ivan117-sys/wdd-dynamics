@@ -28,7 +28,7 @@ class Frontend
     );
 
     wp_localize_script('ma-tracker', 'MA', [
-      'rest' => esc_url_raw(rest_url('ma/v1/track')),
+      'track' => esc_url_raw(rest_url('ma/v1/track')),
       'evaluate' => esc_url_raw(rest_url('ma/v1/evaluate')),
       'subscribe' => esc_url_raw(rest_url('ma/v1/subscribe')),
       'bannerText' => esc_html(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari 10% popusta danas!')),

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  if(!window.MA || !MA.rest) return;
+  if(!window.MA) return;
 
   if(!MA.enableModal && !MA.enableBanner) return;
 
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const timeOnPage = Math.floor((Date.now() - start) / 1000);
 
-        await postJSON(MA.rest, { clicks, 'time_on_page': timeOnPage });
+        await postJSON(MA.track, { clicks, 'time_on_page': timeOnPage });
 
         const data = await postJSON(MA.evaluate);
 
