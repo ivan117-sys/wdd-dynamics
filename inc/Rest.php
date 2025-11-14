@@ -18,7 +18,12 @@ class Rest
     register_rest_route('ma/v1', '/subscribe', [
       'methods'  => 'POST',
       'callback' => [__CLASS__, 'subscribe'],
-      'permission_callback' => '__return_true',
+      'permission_callback' => function (WP_REST_Request $request) {
+        return wp_verify_nonce(
+          $request->get_header('X-WP-Nonce'),
+          'wp_rest'
+        );
+      },
     ]);
     register_rest_route('ma/v1', '/track', [
       'methods'  => 'POST',
@@ -73,17 +78,35 @@ class Rest
   {
     global $wpdb;
 
-    /** @var \WP_REST_Request $request */
-    $email = sanitize_email($request['email']);
+    $params = $request->get_json_params();
+
+    $email = sanitize_email($params['email'] ?? '');
+
     if (!is_email($email)) {
-      return new WP_Error('invalid_email', 'Neispravna email adresa', ['status' => 400]);
+      return new WP_Error(
+        'invalid_email',
+        __('Neispravna email adresa.', 'wdd-marketing-dynamics'),
+        ['status' => 400]
+      );
     }
 
     $table = $wpdb->prefix . 'ma_subscribers';
-    $wpdb->insert($table, [
-      'email' => $email,
-      'created_at' => current_time('mysql')
-    ]);
+    $insert = $wpdb->insert(
+      $table,
+      [
+        'email'      => $email,
+        'created_at' => current_time('mysql'),
+      ]
+    );
+
+
+    if ($insert === false) {
+      return new WP_Error(
+        'db_insert_error',
+        __('Greška pri spremanju u bazu.', 'wdd-marketing-dynamics'),
+        ['status' => 500]
+      );
+    }
 
     return rest_ensure_response(['ok' => true]);
   }

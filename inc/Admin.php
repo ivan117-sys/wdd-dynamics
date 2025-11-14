@@ -7,7 +7,25 @@ class Admin
   public static function init(): void
   {
     add_action('admin_menu', [__CLASS__, 'menu']);
+    add_action('admin_enqueue_scripts', [__CLASS__, 'enqueue_assets']);
   }
+
+  public static function enqueue_assets(string $hook): void
+  {
+
+    if ($hook !== 'toplevel_page_wdd-dynamics') {
+      return;
+    }
+
+    wp_enqueue_script(
+      'ma-admin-fcl-examples',
+      plugins_url('../assets/js/admin-fcl-examples.js', __FILE__),
+      [],
+      '1.0.0',
+      true
+    );
+  }
+
 
   public static function menu(): void
   {
@@ -109,6 +127,21 @@ if ($country == "HR") {
                   </p>
                 </td>
               </tr>
+              <tr>
+                <th scope="row">
+                  <label for="ma_enable_country_detection">Omogući detekciju države (ipapi.co)</label>
+                </th>
+                <td>
+                  <label>
+                    <input type="checkbox" id="ma_enable_country_detection" name="ma_enable_country_detection" value="1" <?php checked(get_option('ma_enable_country_detection'), 1); ?> />
+                    <span>Ova opcija šalje IP adresu korisnika servisu ipapi.co radi otkrivanja države.</span>
+                  </label>
+                  <p class="description">
+                    Ako ovo isključiš, varijabla <code>$country</code> će imati vrijednost <code>'DISABLED'</code>.
+                  </p>
+                </td>
+              </tr>
+
               <tr>
                 <th scope="row" colspan="2">
                   <p style="
@@ -232,54 +265,6 @@ if ($country == "HR") {
       echo '</div></div>';
       ?>
     </div>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const select = document.getElementById('ma_fcl_examples');
-        const textarea = document.querySelector('[name="ma_fcl_code"]');
-
-        const examples = {
-          modal_10s: `// Ako je korisnik na stranici manje od 10 sekundi → pokaži modal
-if ($time_on_page < 10) {
-  $return = 'show_newsletter_modal';
-} else {
-  $return = 'none';
-}`,
-          banner_5clicks: `// Ako je korisnik kliknuo više od 5 puta → pokaži banner
-if ($clicks > 5) {
-  $return = 'show_discount_banner';
-} else {
-  $return = 'none';
-}`,
-          banner_3visits: `// Ako je korisnik posjetio više od 3 puta → pokaži banner
-if ($visits > 3) {
-  $return = 'show_discount_banner';
-} else {
-  $return = 'none';
-}`,
-          modal_mobile: `// Ako korisnik koristi mobitel → pokaži modal
-if ($is_mobile == true) {
-  $return = 'show_newsletter_modal';
-} else {
-  $return = 'none';
-}`,
-
-          banner_croatia: `// Ako je korisnik iz Hrvatske (country = 'HR') → pokaži banner
-if ($country == "HR") {
-  $return = 'show_discount_banner';
-} else {
-  $return = 'none';
-}`
-        };
-
-        if (select && textarea) {
-          select.addEventListener('change', () => {
-            const code = examples[select.value];
-            if (code) textarea.value = code;
-          });
-        }
-      });
-    </script>
 <?php
   }
 }

@@ -4,6 +4,15 @@ namespace MarketingAutomation;
 
 use FormsComputedLanguage\LanguageRunner;
 
+/**
+ * Evaluator uses FormsComputedLanguage\LanguageRunner to execute a simple,
+ * PHP-LIKE rules syntax that is not native PHP. User input is NOT executed
+ * as PHP code. The LanguageRunner library parses and evaluates the rules in
+ * a restricted environment with whitelisted variables/constants, so that
+ * arbitrary PHP functions or system calls cannot be invoked.
+ */
+
+
 class Evaluator
 {
   public static function decide(): string

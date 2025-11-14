@@ -11,6 +11,12 @@ class Helpers
 
   public static function get_country(): string
   {
+
+    $enabledCountryDetection = get_option('ma_enable_country_detection', false);
+    if (!$enabledCountryDetection) {
+      return 'DISABLED';
+    }
+
     $ip = $_SERVER['REMOTE_ADDR'] ?? '';
 
     if ($ip === '127.0.0.1' || $ip === '::1') {

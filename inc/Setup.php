@@ -28,6 +28,11 @@ class Setup
       'default' => 7,
       'sanitize_callback' => 'absint',
     ]);
+    register_setting('ma_settings', 'ma_enable_country_detection', [
+      'type'              => 'boolean',
+      'default'           => false,
+      'sanitize_callback' => 'rest_sanitize_boolean',
+    ]);
   }
 
   public static function create_table(): void

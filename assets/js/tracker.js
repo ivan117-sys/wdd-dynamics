@@ -9,15 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', () => clicks++);
 
   // Helpers
-   async function postJSON(url, data = {}) {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'same-origin',
-      body: JSON.stringify(data)
-    });
-    return await res.json();
-  }
+  async function postJSON(url, data = {}, includeNonce = false) {
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+
+      if (includeNonce && MA.restNonce) {
+        headers['X-WP-Nonce'] = MA.restNonce;
+      }
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers,
+        credentials: 'same-origin',
+        body: JSON.stringify(data)
+      });
+
+      return await res.json();
+    }
+
 
   function shouldShowWithTTL(key, days = 7) {
       const ttl = days * 24 * 60 * 60 * 1000; // days in miliseconds
@@ -38,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
 
-      const data = await postJSON(MA.subscribe, { email });
+      const data = await postJSON(MA.subscribe, { email }, true);
       
       if (data?.ok) {
           form.style.display = 'none';
