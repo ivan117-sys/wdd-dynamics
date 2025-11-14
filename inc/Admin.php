@@ -140,7 +140,7 @@ if ($country == "HR") {
               <tr>
                 <th scope="row">
                   <label for="ma_enable_country_detection">
-                    <?php esc_html_e('Omogući detekciju države (ipapi.co)', 'wdd-marketing-dynamics'); ?>
+                    <?php esc_html_e('Omogući detekciju države', 'wdd-marketing-dynamics'); ?>
                   </label>
                 </th>
                 <td>
