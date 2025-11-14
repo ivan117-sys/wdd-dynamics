@@ -35,7 +35,9 @@ class Admin
           <strong style="margin-bottom:10px;">Varijable koje se mogu koristiti u pravilima:</strong><br>
           <code>$time_on_page</code> — sekunde korisnika na stranici<br>
           <code>$clicks</code> — broj klikova korisnika<br>
-          <code>$visits</code> — broj posjeta korisnika (sprema se u cookie)
+          <code>$visits</code> — broj posjeta korisnika (sprema se u cookie)<br>
+          <code>$is_mobile</code> — Da li korisnik koristi desktop ili mobilni uređaj<br>
+          <code>$country</code> — Država iz koje je korisnik (Country code: 'HR', 'EN', 'DE', 'IT')
         </p>
 
         <!-- Decision Engine -->
@@ -54,6 +56,8 @@ class Admin
                       <option value="modal_10s">Prikaži modal nakon 10 sekundi</option>
                       <option value="banner_5clicks">Prikaži banner nakon 5 klikova</option>
                       <option value="banner_3visits">Prikaži banner nakon 3 posjeta</option>
+                      <option value="modal_mobile">Prikaži modal samo na mobitelu</option>
+                      <option value="banner_croatia">Prikaži banner samo za Hrvatsku</option>
                     </select>
                   </p>
 
@@ -61,7 +65,7 @@ class Admin
 
                   <p class="description" style="margin-bottom: 20px;">
                     Ovdje definirate kada se prikazuje <strong>banner</strong> ili <strong>newsletter modal</strong>.
-                    <br>Možete koristiti varijable: <code>$time_on_page</code>, <code>$clicks</code>, <code>$visits</code>.
+                    <br>Možete koristiti varijable: <code>$time_on_page</code>, <code>$clicks</code>, <code>$visits</code>, <code>$is_mobile</code>, <code>$country</code>.
                     Odluke se automatski evaluiraju svakih <strong>5 sekundi</strong> na frontendu,
                     prema pravilima koja definirate ovdje.
                     <br>To znači da ako korisnik ispuni uvjete (npr. $clicks > 5),
@@ -79,6 +83,20 @@ if ($time_on_page == 0) {
 
 // Ako je kliknuo više od 5 puta → pokaži banner
 if ($clicks > 5) {
+  $return = 'show_discount_banner';
+} else {
+  $return = 'none';
+}
+
+// Ako korisnik koristi mobitel → pokaži modal
+if ($is_mobile == true) {
+  $return = 'show_newsletter_modal';
+} else {
+  $return = 'none';
+}
+
+// Ako je korisnik iz Hrvatske → pokaži banner
+if ($country == "HR") {
   $return = 'show_discount_banner';
 } else {
   $return = 'none';
@@ -236,6 +254,19 @@ if ($clicks > 5) {
 }`,
           banner_3visits: `// Ako je korisnik posjetio više od 3 puta → pokaži banner
 if ($visits > 3) {
+  $return = 'show_discount_banner';
+} else {
+  $return = 'none';
+}`,
+          modal_mobile: `// Ako korisnik koristi mobitel → pokaži modal
+if ($is_mobile == true) {
+  $return = 'show_newsletter_modal';
+} else {
+  $return = 'none';
+}`,
+
+          banner_croatia: `// Ako je korisnik iz Hrvatske (country = 'HR') → pokaži banner
+if ($country == "HR") {
   $return = 'show_discount_banner';
 } else {
   $return = 'none';

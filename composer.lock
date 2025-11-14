@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7af986edecd6d0f62ffd3626a6f1444d",
+    "content-hash": "477482891ecde03309c5eb89c250c526",
     "packages": [
         {
             "name": "infobipcth/forms-computed-language",

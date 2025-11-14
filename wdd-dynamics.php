@@ -17,6 +17,7 @@ require __DIR__ . '/inc/Admin.php';
 require __DIR__ . '/inc/Rest.php';
 require __DIR__ . '/inc/Evaluator.php';
 require __DIR__ . '/inc/Frontend.php';
+require __DIR__ . '/inc/Helpers.php';
 
 MarketingAutomation\Setup::init();
 MarketingAutomation\Admin::init();

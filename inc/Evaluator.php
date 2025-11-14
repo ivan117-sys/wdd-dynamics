@@ -27,7 +27,9 @@ class Evaluator
       $lr->setVars([
         'time_on_page' => (int) ($metrics['time_on_page'] ?? 0),
         'clicks' => (int) ($metrics['clicks'] ?? 0),
-        'visits' => $visits
+        'visits' => $visits,
+        'is_mobile' => Helpers::is_mobile(),
+        'country'   => Helpers::get_country()
       ]);
 
       $lr->setAllowedConstants(['true', 'false']);
