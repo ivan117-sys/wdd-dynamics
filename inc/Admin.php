@@ -93,7 +93,7 @@ class Admin
                     <code>$time_on_page</code>, <code>$clicks</code>, <code>$visits</code>, <code>$is_mobile</code>, <code>$country</code>.
                     <br><?php esc_html_e('Odluke se automatski evaluiraju svakih 5 sekundi na frontendu, prema pravilima koja definirate ovdje.', 'wdd-marketing-dynamics'); ?>
                     <br><?php esc_html_e('To znači da ako korisnik ispuni uvjete (npr. $clicks > 5), banner ili modal će se pojaviti unutar nekoliko sekundi.', 'wdd-marketing-dynamics'); ?>
-                    <br><?php esc_html_e('Za promjenu FCL pravila ili bilo koje opcije kliknite plavi gumb "save changes" na dnu stranice.', 'wdd-marketing-dynamics'); ?>
+                    <br><?php esc_html_e('Za promjenu FCL pravila ili bilo koje opcije kliknite plavi gumb "spremi promjene" na dnu stranice.', 'wdd-marketing-dynamics'); ?>
                   </p>
 
                   <p><strong><?php esc_html_e('Primjeri:', 'wdd-marketing-dynamics'); ?></strong></p>
@@ -146,13 +146,12 @@ if ($country == "HR") {
                 <td>
                   <label>
                     <input type="checkbox" id="ma_enable_country_detection" name="ma_enable_country_detection" value="1" <?php checked(get_option('ma_enable_country_detection'), 1); ?> />
-                    <span><?php esc_html_e('Ova opcija šalje IP adresu korisnika servisu ipapi.co radi otkrivanja države.', 'wdd-marketing-dynamics'); ?></span>
+                    <span><?php esc_html_e('Ova opcija šalje IP adresu korisnika servisu ipapi.co radi detekcije države.', 'wdd-marketing-dynamics'); ?></span>
                   </label>
                   <p class="description">
-                    <?php esc_html_e("Ako ovo isključiš, varijabla", 'wdd-marketing-dynamics'); ?>
+                    <?php esc_html_e("Ako je ova opcija isključena, varijabla", 'wdd-marketing-dynamics'); ?>
                     <code>$country</code>
-                    <?php esc_html_e("će imati vrijednost", 'wdd-marketing-dynamics'); ?>
-                    <code>'DISABLED'</code>.
+                    <?php esc_html_e("neće se uzimati u obzir kod analitike.", 'wdd-marketing-dynamics'); ?>
                   </p>
                 </td>
               </tr>
@@ -289,7 +288,7 @@ if ($country == "HR") {
           </div>
         </div>
 
-        <?php submit_button(); ?>
+        <?php submit_button(__('Spremi promjene', 'wdd-marketing-dynamics')); ?>
       </form>
 
       <!-- Newsletter Subscribers -->
