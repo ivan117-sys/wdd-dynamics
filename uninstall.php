@@ -1,20 +1,14 @@
 <?php
 
-/**
- * Uninstall for WDD Marketing Dynamics.
- */
-
 if (!defined('WP_UNINSTALL_PLUGIN')) {
   exit;
 }
 
 global $wpdb;
 
-// Drop subscribers table.
 $table = $wpdb->prefix . 'ma_subscribers';
 $wpdb->query("DROP TABLE IF EXISTS {$table}");
 
-// Delete plugin options.
 $options = [
   'ma_fcl_code',
   'ma_enable_modal',
