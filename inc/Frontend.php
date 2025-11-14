@@ -7,7 +7,7 @@ class Frontend
   public static function init(): void
   {
     add_action('wp_enqueue_scripts', [__CLASS__, 'enqueue']);
-    add_action('init', [__CLASS__, 'count_visit_cookie']);
+    add_action('template_redirect', [__CLASS__, 'count_visit_cookie']);
   }
 
   public static function enqueue(): void
@@ -45,7 +45,22 @@ class Frontend
 
   public static function count_visit_cookie(): void
   {
+
+    if (php_sapi_name() === 'cli') return;
+    if (!isset($_SERVER['REQUEST_METHOD']) || $_SERVER['REQUEST_METHOD'] !== 'GET') return;
+
+    $uri = $_SERVER['REQUEST_URI'];
+
+    if (
+      strpos($uri, '/wp-json/') === 0 ||
+      strpos($uri, '/favicon.ico') === 0 ||
+      preg_match('/\.(png|jpe?g|gif|svg|webp|css|js|ico|woff2?|ttf|eot)$/i', $uri)
+    ) {
+      return;
+    }
+
     $visits = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] + 1 : 1;
+
     setcookie('ma_visits', (string)$visits, time() + YEAR_IN_SECONDS, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
   }
 }
