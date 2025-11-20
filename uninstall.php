@@ -1,15 +1,20 @@
 <?php
 
-if (!defined('WP_UNINSTALL_PLUGIN')) {
+if (! defined('WP_UNINSTALL_PLUGIN')) {
   exit;
 }
 
 global $wpdb;
 
-$table = $wpdb->prefix . 'ma_subscribers';
-$wpdb->query("DROP TABLE IF EXISTS {$table}");
+/**
+ * Table created by the plugin – safe to interpolate directly.
+ * Plugin authors are allowed to drop their own tables without prepare().
+ */
+$wdd_dynamics_table = $wpdb->prefix . 'ma_subscribers';
 
-$options = [
+$wpdb->query("DROP TABLE IF EXISTS `$wdd_dynamics_table`");
+
+$wdd_dynamics_option_keys = [
   'ma_fcl_code',
   'ma_enable_modal',
   'ma_enable_banner',
@@ -22,6 +27,6 @@ $options = [
   'ma_enable_country_detection',
 ];
 
-foreach ($options as $option) {
-  delete_option($option);
+foreach ($wdd_dynamics_option_keys as $wdd_dynamics_key) {
+  delete_option($wdd_dynamics_key);
 }
