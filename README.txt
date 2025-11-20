@@ -1,7 +1,9 @@
-=== WDD Marketing Dynamics === Contributors: ivan117 Tags:
-marketing, automation, popup, banner, newsletter, fcl Requires at least:
-5.0 Tested up to: 6.7 Requires PHP: 7.4 Stable tag: 1.0.0 License: GPLv2
-or later License URI: https://www.gnu.org/licenses/gpl-2.0.html
+=== WDD Marketing Dynamics ===
+
+Contributors: ivan117 
+Tags: marketing, automation, popup, banner, newsletter 
+fcl Requires at least: 5.0 Tested up to: 6.7 Requires PHP: 7.4 Stable tag: 1.0.0 
+License: GPLv2 or later License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A lightweight but powerful marketing automation plugin that tracks user
 behavior and uses FCL rules to display dynamic modals or discount
