@@ -17,7 +17,7 @@ class Helpers
       return 'DISABLED';
     }
 
-    $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+    $ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) ?? '';
 
     if ($ip === '127.0.0.1' || $ip === '::1') {
       return 'LOCAL';

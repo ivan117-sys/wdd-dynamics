@@ -63,7 +63,7 @@ Inside **Dashboard → WDD Dynamics**, you can:
 
 ##  Installation
 
-1. Upload the plugin to `wp-content/plugins/wdd-marketing-dynamics`
+1. Upload the plugin to `wp-content/plugins/wdd-dynamics`
 2. Activate the plugin from **Plugins → Installed Plugins**
 3. Go to **WDD Dynamics** in the admin menu
 4. Configure FCL rules, modal, and banner settings

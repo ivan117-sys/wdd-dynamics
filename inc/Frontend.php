@@ -49,7 +49,7 @@ class Frontend
     if (php_sapi_name() === 'cli') return;
     if (!isset($_SERVER['REQUEST_METHOD']) || $_SERVER['REQUEST_METHOD'] !== 'GET') return;
 
-    $uri = $_SERVER['REQUEST_URI'];
+    $uri = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 
     if (
       strpos($uri, '/wp-json/') === 0 ||

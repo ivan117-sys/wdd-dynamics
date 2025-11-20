@@ -22,19 +22,19 @@ class Evaluator
     $metrics = [];
 
     if (isset($_COOKIE['ma_metrics'])) {
-      $decoded = json_decode(stripslashes($_COOKIE['ma_metrics']), true);
+      $decoded = json_decode(wp_unslash($_COOKIE['ma_metrics']), true);
       if (is_array($decoded)) $metrics = $decoded;
     }
 
-    $visits = isset($_COOKIE['ma_visits']) ? (int) $_COOKIE['ma_visits'] : 1;
+    $visits = isset($_COOKIE['ma_visits']) ? (int) wp_unslash($_COOKIE['ma_visits']) : 1;
 
     try {
 
       $lr = new LanguageRunner();
       $lr->setCode($code);
       $lr->setVars([
-        'time_on_page' => (int) ($metrics['time_on_page'] ?? 0),
-        'clicks' => (int) ($metrics['clicks'] ?? 0),
+        'time_on_page' => absint($metrics['time_on_page'] ?? 0),
+        'clicks' => absint($metrics['clicks'] ?? 0),
         'visits' => $visits,
         'is_mobile' => Helpers::is_mobile(),
         'country'   => Helpers::get_country()
@@ -48,7 +48,9 @@ class Evaluator
 
       return $vars['return'] ?? 'none';
     } catch (\Throwable $e) {
-      error_log('FCL evaluation failed' . $e->getMessage());
+      if (defined('WP_DEBUG') && WP_DEBUG) {
+        error_log('FCL evaluation failed: ' . $e->getMessage());
+      }
       return 'none';
     }
   }

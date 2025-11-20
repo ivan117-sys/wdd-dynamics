@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Plugin Name: WDD Marketing Dynamics
+ * Plugin Name: WDD Dynamics
  * Description: Measures user behavior and, with FCL, decides which modal/banner to display.
  * Version: 1.0.0
  * Author: Ivan Mušković
  * License: GPLv2 or later
- * Text Domain: wdd-marketing-dynamics
+ * Text Domain: wdd-dynamics
  * Domain Path: /languages
- * Update URI: false
  */
 
 if (!defined('ABSPATH')) exit;
@@ -33,7 +32,7 @@ if (function_exists('wp_add_privacy_policy_content')) {
     $content = wp_kses_post(
       __(
         'Ovaj dodatak prati osnovne metrike ponašanja korisnika (vrijeme na stranici, broj klikova, broj posjeta) koristeći kolačiće u pregledniku i, opcionalno, šalje IP adresu servisu ipapi.co radi određivanja države korisnika. E-mail adrese unesene u newsletter modal pohranjuju se u WordPress bazu podataka u tablici &lt;prefix&gt;ma_subscribers. Administrator može izbrisati podatke kroz standardne alate WordPressa ili deaktivacijom / deinstalacijom dodatka.',
-        'wdd-marketing-dynamics'
+        'wdd-dynamics'
       )
     );
 
@@ -43,11 +42,3 @@ if (function_exists('wp_add_privacy_policy_content')) {
     );
   });
 }
-
-add_action('plugins_loaded', function () {
-  load_plugin_textdomain(
-    'wdd-marketing-dynamics',
-    false,
-    dirname(plugin_basename(__FILE__)) . '/languages'
-  );
-});

@@ -96,7 +96,7 @@ class Rest
     if (!is_email($email)) {
       return new WP_Error(
         'invalid_email',
-        __('Neispravna email adresa.', 'wdd-marketing-dynamics'),
+        __('Neispravna email adresa.', 'wdd-dynamics'),
         ['status' => 400]
       );
     }
@@ -114,7 +114,7 @@ class Rest
     if ($insert === false) {
       return new WP_Error(
         'db_insert_error',
-        __('Greška pri spremanju u bazu.', 'wdd-marketing-dynamics'),
+        __('Greška pri spremanju u bazu.', 'wdd-dynamics'),
         ['status' => 500]
       );
     }
