@@ -1,6 +1,6 @@
-# WDD Marketing Dynamics
+# WDD Dynamics
 
-**WDD Marketing Dynamics** is a lightweight but powerful WordPress plugin that tracks user behavior and uses an FCL (Forms Computed Language) rule engine to decide whether to display a **newsletter modal** or a **discount banner**.  
+**WDD Dynamics** is a lightweight but powerful WordPress plugin that tracks user behavior and uses an FCL (Forms Computed Language) rule engine to decide whether to display a **newsletter modal** or a **discount banner**.  
 It enables fully dynamic, condition-based marketing automation.
 
 ---
