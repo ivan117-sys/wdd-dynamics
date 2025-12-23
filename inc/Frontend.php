@@ -1,6 +1,6 @@
 <?php
 
-namespace MarketingAutomation;
+namespace wdd\MarketingAutomation;
 
 class Frontend
 {
@@ -32,14 +32,14 @@ class Frontend
       'evaluate' => esc_url_raw(rest_url('ma/v1/evaluate')),
       'subscribe' => esc_url_raw(rest_url('ma/v1/subscribe')),
       'restNonce'  => wp_create_nonce('wp_rest'),
-      'bannerText' => esc_html(get_option('ma_banner_text', 'Specijalna ponuda: Ostvari 10% popusta danas!')),
-      'bannerLink' => esc_url(get_option('ma_banner_link', '/shop')),
-      'modalHeading' => esc_html(get_option('ma_modal_heading', 'Pridruži se newsletteru')),
-      'modalText' => esc_html(get_option('ma_modal_text', 'Dobij novosti i ponude, prijavi se ispod!')),
-      'bannerTTL' => (int) get_option('ma_banner_ttl_days', 7),
-      'modalTTL' => (int) get_option('ma_modal_ttl_days', 7),
-      'enableModal' => (bool) get_option('ma_enable_modal'),
-      'enableBanner' => (bool) get_option('ma_enable_banner')
+      'bannerText' => esc_html(get_option('wddma_banner_text', 'Specijalna ponuda: Ostvari 10% popusta danas!')),
+      'bannerLink' => esc_url(get_option('wddma_banner_link', '/shop')),
+      'modalHeading' => esc_html(get_option('wddma_modal_heading', 'Pridruži se newsletteru')),
+      'modalText' => esc_html(get_option('wddma_modal_text', 'Dobij novosti i ponude, prijavi se ispod!')),
+      'bannerTTL' => (int) get_option('wddma_banner_ttl_days', 7),
+      'modalTTL' => (int) get_option('wddma_modal_ttl_days', 7),
+      'enableModal' => (bool) get_option('wddma_enable_modal'),
+      'enableBanner' => (bool) get_option('wddma_enable_banner')
     ]);
   }
 
@@ -59,10 +59,10 @@ class Frontend
       return;
     }
 
-    $visits = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] + 1 : 1;
+    $visits = isset($_COOKIE['wddma_visits']) ? (int)$_COOKIE['wddma_visits'] + 1 : 1;
 
     setcookie(
-      'ma_visits',
+      'wddma_visits',
       (string)$visits,
       [
         'expires'  => time() + YEAR_IN_SECONDS,

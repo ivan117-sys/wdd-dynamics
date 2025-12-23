@@ -4,27 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "477482891ecde03309c5eb89c250c526",
+    "content-hash": "407c2d37aa1b49be09d16de276b889d8",
     "packages": [
         {
             "name": "infobipcth/forms-computed-language",
-            "version": "v1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infobipcth/forms-computed-language.git",
-                "reference": "4080c7e3e1d540ecb0d565dfb912b9b7bfbcff71"
+                "reference": "045b2f574ce8fb94f57acd8dd74f88ef1558d15c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infobipcth/forms-computed-language/zipball/4080c7e3e1d540ecb0d565dfb912b9b7bfbcff71",
-                "reference": "4080c7e3e1d540ecb0d565dfb912b9b7bfbcff71",
+                "url": "https://api.github.com/repos/infobipcth/forms-computed-language/zipball/045b2f574ce8fb94f57acd8dd74f88ef1558d15c",
+                "reference": "045b2f574ce8fb94f57acd8dd74f88ef1558d15c",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "^4.17"
+                "nikic/php-parser": "^4.17",
+                "php": "^8.2"
             },
             "require-dev": {
-                "pestphp/pest": "^2.28"
+                "pestphp/pest": "^2.28",
+                "squizlabs/php_codesniffer": "^3.9"
             },
             "type": "project",
             "autoload": {
@@ -37,13 +39,17 @@
                 {
                     "name": "Mario Borna Mjertan",
                     "email": "marioborna.mjertan@infobip.com"
+                },
+                {
+                    "name": "Denis Žoljom",
+                    "email": "denis.zoljom@infobip.com"
                 }
             ],
             "support": {
                 "issues": "https://github.com/infobipcth/forms-computed-language/issues",
-                "source": "https://github.com/infobipcth/forms-computed-language/tree/v1.0"
+                "source": "https://github.com/infobipcth/forms-computed-language/tree/2.2.0"
             },
-            "time": "2024-03-13T10:51:56+00:00"
+            "time": "2024-04-30T09:09:47+00:00"
         },
         {
             "name": "nikic/php-parser",

@@ -1,6 +1,6 @@
 <?php
 
-namespace MarketingAutomation;
+namespace wdd\MarketingAutomation;
 
 class Setup
 {
@@ -11,47 +11,47 @@ class Setup
 
   public static function register_options(): void
   {
-    register_setting('ma_settings', 'ma_fcl_code', [
+    register_setting('wddma_settings', 'wddma_fcl_code', [
       'sanitize_callback' => [__CLASS__, 'sanitize_text'],
     ]);
 
-    register_setting('ma_settings', 'ma_enable_modal', [
+    register_setting('wddma_settings', 'wddma_enable_modal', [
       'sanitize_callback' => [__CLASS__, 'sanitize_bool'],
     ]);
 
-    register_setting('ma_settings', 'ma_enable_banner', [
+    register_setting('wddma_settings', 'wddma_enable_banner', [
       'sanitize_callback' => [__CLASS__, 'sanitize_bool'],
     ]);
 
-    register_setting('ma_settings', 'ma_banner_text', [
+    register_setting('wddma_settings', 'wddma_banner_text', [
       'sanitize_callback' => [__CLASS__, 'sanitize_text'],
     ]);
 
-    register_setting('ma_settings', 'ma_banner_link', [
+    register_setting('wddma_settings', 'wddma_banner_link', [
       'sanitize_callback' => 'esc_url_raw',
     ]);
 
-    register_setting('ma_settings', 'ma_modal_text', [
+    register_setting('wddma_settings', 'wddma_modal_text', [
       'sanitize_callback' => [__CLASS__, 'sanitize_text'],
     ]);
 
-    register_setting('ma_settings', 'ma_modal_heading', [
+    register_setting('wddma_settings', 'wddma_modal_heading', [
       'sanitize_callback' => [__CLASS__, 'sanitize_text'],
     ]);
 
-    register_setting('ma_settings', 'ma_banner_ttl_days', [
+    register_setting('wddma_settings', 'wddma_banner_ttl_days', [
       'type'              => 'integer',
       'default'           => 7,
       'sanitize_callback' => 'absint',
     ]);
 
-    register_setting('ma_settings', 'ma_modal_ttl_days', [
+    register_setting('wddma_settings', 'wddma_modal_ttl_days', [
       'type'              => 'integer',
       'default'           => 7,
       'sanitize_callback' => 'absint',
     ]);
 
-    register_setting('ma_settings', 'ma_enable_country_detection', [
+    register_setting('wddma_settings', 'wddma_enable_country_detection', [
       'type'              => 'boolean',
       'default'           => false,
       'sanitize_callback' => [__CLASS__, 'sanitize_bool'],
@@ -62,7 +62,7 @@ class Setup
   public static function create_table(): void
   {
     global $wpdb;
-    $table = $wpdb->prefix . 'ma_subscribers';
+    $table = $wpdb->prefix . 'wddma_subscribers';
     $charset = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $table (

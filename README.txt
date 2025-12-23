@@ -1,4 +1,4 @@
-=== WDD Dynamics ===
+=== WDD Marketing Automation ===
 Contributors: ivan117 
 Tags: marketing, automation, popup, banner, newsletter
 Requires at least: 5.0 
@@ -42,7 +42,7 @@ The frontend evaluates rules every 5 seconds.
 
 -   Customizable title & text
 -   Built-in email submission form
--   Submissions stored in custom DB table (wp_ma_subscribers)
+-   Submissions stored in custom DB table (wp_wddma_subscribers)
 -   TTL-based control (show once every X days)
 
 = Discount Banner =
@@ -53,15 +53,15 @@ The frontend evaluates rules every 5 seconds.
 
 = Admin Interface =
 
-Inside Dashboard → WDD Dynamics, you can: * Set FCL rules *
+Inside Dashboard → WDD Marketing Automation, you can: * Set FCL rules *
 Enable/disable modal or banner * Customize texts and links * View latest
 newsletter subscribers
 
 == Installation ==
 
-1.  Upload the plugin to /wp-content/plugins/wdd-dynamics
+1.  Upload the plugin to /wp-content/plugins/wdd-marketing-automation
 2.  Activate via Plugins → Installed Plugins
-3.  Go to WDD Dynamics in the admin menu
+3.  Go to WDD Marketing Automation in the admin menu
 4.  Configure settings
 
 == Frequently Asked Questions ==
@@ -69,7 +69,7 @@ newsletter subscribers
 = How often are rules evaluated? = Every 5 seconds in the frontend.
 
 = Where are subscribers stored? = In the custom database table
-wp_ma_subscribers.
+wp_wddma_subscribers.
 
 == Screenshots == 1. Admin interface 2. Newsletter modal 3. Discount
 banner
@@ -91,7 +91,7 @@ evaluate FCL rules * POST /subscribe — store email
 
 == Database ==
 
-Creates table: wp_ma_subscribers
+Creates table: wp_wddma_subscribers
 
 Columns: * id BIGINT auto-increment * email VARCHAR * created_at
 DATETIME

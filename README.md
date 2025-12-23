@@ -1,6 +1,6 @@
-# WDD Dynamics
+# WDD Marketing Automation
 
-**WDD Dynamics** is a lightweight but powerful WordPress plugin that tracks user behavior and uses an FCL (Forms Computed Language) rule engine to decide whether to display a **newsletter modal** or a **discount banner**.  
+**WDD Marketing Automation** is a lightweight but powerful WordPress plugin that tracks user behavior and uses an FCL (Forms Computed Language) rule engine to decide whether to display a **newsletter modal** or a **discount banner**.  
 It enables fully dynamic, condition-based marketing automation.
 
 ---
@@ -42,7 +42,7 @@ The frontend evaluates rules **every 5 seconds**.
 
 - Customizable title & text
 - Built-in email submission form
-- Submissions stored in custom DB table (`wp_ma_subscribers`)
+- Submissions stored in custom DB table (`wp_wddma_subscribers`)
 - TTL-based control (e.g., show once every X days)
 
 ###  Discount Banner
@@ -53,7 +53,7 @@ The frontend evaluates rules **every 5 seconds**.
 
 ###  Admin Interface
 
-Inside **Dashboard → WDD Dynamics**, you can:
+Inside **Dashboard → WDD Marketing Automation**, you can:
 - Set FCL rules
 - Enable/disable modal or banner
 - Customize texts and links
@@ -63,9 +63,9 @@ Inside **Dashboard → WDD Dynamics**, you can:
 
 ##  Installation
 
-1. Upload the plugin to `wp-content/plugins/wdd-dynamics`
+1. Upload the plugin to `wp-content/plugins/wdd-marketing-automation`
 2. Activate the plugin from **Plugins → Installed Plugins**
-3. Go to **WDD Dynamics** in the admin menu
+3. Go to **WDD Marketing Automation** in the admin menu
 4. Configure FCL rules, modal, and banner settings
 
 ---
@@ -124,7 +124,7 @@ if ($country == "HR") {
 On activation, the plugin creates:
 
 ```
-wp_ma_subscribers
+wp_wddma_subscribers
 ```
 
 Structure:

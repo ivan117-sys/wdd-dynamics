@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
     if (document.querySelector('.ma-modal')) return; 
 
-    localStorage.setItem('ma_modal_shown', Date.now());
+    localStorage.setItem('wddma_modal_shown', Date.now());
 
     const modalText = MA.modalText || ''; 
     const modalHeading = MA.modalHeading || ''; 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.querySelector('.ma-banner')) return;
 
-    localStorage.setItem('ma_banner_shown', Date.now());
+    localStorage.setItem('wddma_banner_shown', Date.now());
 
     const text = MA.bannerText || ''; 
     const link = MA.bannerLink || ''; 
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!data || !data.decision) return;
 
-        const canShowModal = shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7);
-        const canShowBanner = shouldShowWithTTL('ma_banner_shown', MA.bannerTTL || 7);
+        const canShowModal = shouldShowWithTTL('wddma_modal_shown', MA.modalTTL || 7);
+        const canShowBanner = shouldShowWithTTL('wddma_banner_shown', MA.bannerTTL || 7);
 
         if (data.decision === 'show_discount_banner' && canShowBanner) {
           showBanner();
@@ -171,8 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
    setInterval(async () => {
 
-    const canShowModal  = MA.enableModal  && shouldShowWithTTL('ma_modal_shown', MA.modalTTL || 7);
-    const canShowBanner = MA.enableBanner && shouldShowWithTTL('ma_banner_shown', MA.bannerTTL || 7);
+    const canShowModal  = MA.enableModal  && shouldShowWithTTL('wddma_modal_shown', MA.modalTTL || 7);
+    const canShowBanner = MA.enableBanner && shouldShowWithTTL('wddma_banner_shown', MA.bannerTTL || 7);
 
     if (!canShowModal && !canShowBanner) return;
 

@@ -8,6 +8,6 @@
     }
   },
   "require": {
-    "infobipcth/forms-computed-language": "1.0"
+    "infobipcth/forms-computed-language": "^2"
   }
 }

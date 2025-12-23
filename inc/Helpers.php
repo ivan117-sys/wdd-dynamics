@@ -1,6 +1,6 @@
 <?php
 
-namespace MarketingAutomation;
+namespace wdd\MarketingAutomation;
 
 class Helpers
 {
@@ -12,7 +12,7 @@ class Helpers
   public static function get_country(): string
   {
 
-    $enabledCountryDetection = get_option('ma_enable_country_detection', false);
+    $enabledCountryDetection = get_option('wddma_enable_country_detection', false);
     if (!$enabledCountryDetection) {
       return 'DISABLED';
     }

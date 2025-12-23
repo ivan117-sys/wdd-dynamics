@@ -1,6 +1,6 @@
 <?php
 
-namespace MarketingAutomation;
+namespace wdd\MarketingAutomation;
 
 use WP_Error;
 use WP_REST_Request;
@@ -42,7 +42,7 @@ class Rest
     $data         = json_decode($request->get_body(), true);
     $time_on_page = isset($data['time_on_page']) ? (int)$data['time_on_page'] : 0;
     $clicks       = isset($data['clicks']) ? (int)$data['clicks'] : 0;
-    $visits       = isset($_COOKIE['ma_visits']) ? (int)$_COOKIE['ma_visits'] : 1;
+    $visits       = isset($_COOKIE['wddma_visits']) ? (int)$_COOKIE['wddma_visits'] : 1;
 
     $payload = wp_json_encode([
       'time_on_page' => $time_on_page,
@@ -51,7 +51,7 @@ class Rest
     ]);
 
     setcookie(
-      'ma_metrics',
+      'wddma_metrics',
       $payload,
       [
         'expires'  => time() + 3600,
@@ -70,8 +70,8 @@ class Rest
   {
     $result = Evaluator::decide();
 
-    $enable_modal  = get_option('ma_enable_modal');
-    $enable_banner = get_option('ma_enable_banner');
+    $enable_modal  = get_option('wddma_enable_modal');
+    $enable_banner = get_option('wddma_enable_banner');
 
     if ($result === 'show_newsletter_modal' && !$enable_modal) {
       $result = 'none';
@@ -87,7 +87,7 @@ class Rest
 
   public static function subscribe(WP_REST_Request $request): WP_Error|WP_REST_Response
   {
-    global $wpdb;
+    global $wdd_wpdb;
 
     $params = $request->get_json_params();
 
@@ -96,13 +96,13 @@ class Rest
     if (!is_email($email)) {
       return new WP_Error(
         'invalid_email',
-        __('Neispravna email adresa.', 'wdd-dynamics'),
+        __('Neispravna email adresa.', 'wdd-marketing-automation'),
         ['status' => 400]
       );
     }
 
-    $table = $wpdb->prefix . 'ma_subscribers';
-    $insert = $wpdb->insert(
+    $table = $wdd_wpdb->prefix . 'wddma_subscribers';
+    $insert = $wdd_wpdb->insert(
       $table,
       [
         'email'      => $email,
@@ -114,7 +114,7 @@ class Rest
     if ($insert === false) {
       return new WP_Error(
         'db_insert_error',
-        __('Greška pri spremanju u bazu.', 'wdd-dynamics'),
+        __('Greška pri spremanju u bazu.', 'wdd-marketing-automation'),
         ['status' => 500]
       );
     }

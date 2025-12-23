@@ -1,6 +1,6 @@
 <?php
 
-namespace MarketingAutomation;
+namespace wdd\MarketingAutomation;
 
 use FormsComputedLanguage\LanguageRunner;
 
@@ -17,16 +17,16 @@ class Evaluator
 {
   public static function decide(): string
   {
-    $code = get_option('ma_fcl_code', 'return "none";');
+    $code = get_option('wddma_fcl_code', 'return "none";');
 
     $metrics = [];
 
-    if (isset($_COOKIE['ma_metrics'])) {
-      $decoded = json_decode(wp_unslash($_COOKIE['ma_metrics']), true);
+    if (isset($_COOKIE['wddma_metrics'])) {
+      $decoded = json_decode(wp_unslash($_COOKIE['wddma_metrics']), true);
       if (is_array($decoded)) $metrics = $decoded;
     }
 
-    $visits = isset($_COOKIE['ma_visits']) ? (int) wp_unslash($_COOKIE['ma_visits']) : 1;
+    $visits = isset($_COOKIE['wddma_visits']) ? (int) wp_unslash($_COOKIE['wddma_visits']) : 1;
 
     try {
 

@@ -3,7 +3,7 @@
         'name' => 'yourname/fcl-behavior-automation',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd021dd5557be533a02e39ed3eb69dda10c6972de',
+        'reference' => '45e0dff1610a3d3a38c6d4c7dad28694b3dba343',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'infobipcth/forms-computed-language' => array(
-            'pretty_version' => 'v1.0',
-            'version' => '1.0.0.0',
-            'reference' => '4080c7e3e1d540ecb0d565dfb912b9b7bfbcff71',
+            'pretty_version' => '2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => '045b2f574ce8fb94f57acd8dd74f88ef1558d15c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../infobipcth/forms-computed-language',
             'aliases' => array(),
@@ -31,7 +31,7 @@
         'yourname/fcl-behavior-automation' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd021dd5557be533a02e39ed3eb69dda10c6972de',
+            'reference' => '45e0dff1610a3d3a38c6d4c7dad28694b3dba343',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

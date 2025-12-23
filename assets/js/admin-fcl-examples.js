@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  const select   = document.getElementById('ma_fcl_examples');
-  const textarea = document.querySelector('[name="ma_fcl_code"]');
+  const select   = document.getElementById('wddma_fcl_examples');
+  const textarea = document.querySelector('[name="wddma_fcl_code"]');
 
   const examples = {
     modal_10s: `// Ako je korisnik na stranici manje od 10 sekundi → pokaži modal
