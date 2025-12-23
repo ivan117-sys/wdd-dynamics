@@ -20,12 +20,12 @@ require __DIR__ . '/inc/Evaluator.php';
 require __DIR__ . '/inc/Frontend.php';
 require __DIR__ . '/inc/Helpers.php';
 
-wdd\MarketingAutomation\Setup::init();
-wdd\MarketingAutomation\Admin::init();
-wdd\MarketingAutomation\Rest::init();
-wdd\MarketingAutomation\Frontend::init();
+WDD_Marketing_Automation\Setup::init();
+WDD_Marketing_Automation\Admin::init();
+WDD_Marketing_Automation\Rest::init();
+WDD_Marketing_Automation\Frontend::init();
 
-register_activation_hook(__FILE__, [wdd\MarketingAutomation\Setup::class, 'create_table']);
+register_activation_hook(__FILE__, [WDD_Marketing_Automation\Setup::class, 'create_table']);
 
 if (function_exists('wp_add_privacy_policy_content')) {
   add_action('admin_init', function () {

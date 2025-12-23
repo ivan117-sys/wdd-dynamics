@@ -1,6 +1,6 @@
 <?php
 
-namespace wdd\MarketingAutomation;
+namespace WDD_Marketing_Automation;
 
 use WP_Error;
 use WP_REST_Request;

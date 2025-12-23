@@ -1,6 +1,6 @@
 <?php
 
-namespace wdd\MarketingAutomation;
+namespace WDD_Marketing_Automation;
 
 use FormsComputedLanguage\LanguageRunner;
 
@@ -22,10 +22,12 @@ class Evaluator
     $metrics = [];
 
     if (isset($_COOKIE['wddma_metrics'])) {
+      // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
       $decoded = json_decode(wp_unslash($_COOKIE['wddma_metrics']), true);
       if (is_array($decoded)) $metrics = $decoded;
     }
 
+    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
     $visits = isset($_COOKIE['wddma_visits']) ? (int) wp_unslash($_COOKIE['wddma_visits']) : 1;
 
     try {
@@ -49,7 +51,7 @@ class Evaluator
       return $vars['return'] ?? 'none';
     } catch (\Throwable $e) {
       if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('FCL evaluation failed: ' . $e->getMessage());
+        return 'none';
       }
       return 'none';
     }

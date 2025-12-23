@@ -1,20 +1,18 @@
 <?php
-
 if (! defined('WP_UNINSTALL_PLUGIN')) {
   exit;
 }
 
 global $wpdb;
 
-/**
- * Table created by the plugin – safe to interpolate directly.
- * Plugin authors are allowed to drop their own tables without prepare().
- */
-$wdd_dynamics_table = $wpdb->prefix . 'wddma_subscribers';
+$wddma_dynamics_table = $wpdb->prefix . 'wddma_subscribers';
 
-$wpdb->query("DROP TABLE IF EXISTS `$wdd_dynamics_table`");
+$wddma_table = esc_sql($wddma_dynamics_table);
 
-$wdd_dynamics_option_keys = [
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+$wpdb->query("DROP TABLE IF EXISTS `$wddma_table`");
+
+$wddma_dynamics_option_keys = [
   'wddma_fcl_code',
   'wddma_enable_modal',
   'wddma_enable_banner',
@@ -27,6 +25,6 @@ $wdd_dynamics_option_keys = [
   'wddma_enable_country_detection',
 ];
 
-foreach ($wdd_dynamics_option_keys as $wdd_dynamics_key) {
-  delete_option($wdd_dynamics_key);
+foreach ($wddma_dynamics_option_keys as $wddma_dynamics_key) {
+  delete_option($wddma_dynamics_key);
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace wdd\MarketingAutomation;
+namespace WDD_Marketing_Automation;
 
 class Admin
 {
