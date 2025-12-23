@@ -4,15 +4,15 @@ if (! defined('WP_UNINSTALL_PLUGIN')) {
   exit;
 }
 
-global $wdd_wpdb;
+global $wpdb;
 
 /**
  * Table created by the plugin – safe to interpolate directly.
  * Plugin authors are allowed to drop their own tables without prepare().
  */
-$wdd_dynamics_table = $wdd_wpdb->prefix . 'wddma_subscribers';
+$wdd_dynamics_table = $wpdb->prefix . 'wddma_subscribers';
 
-$wdd_wpdb->query("DROP TABLE IF EXISTS `$wdd_dynamics_table`");
+$wpdb->query("DROP TABLE IF EXISTS `$wdd_dynamics_table`");
 
 $wdd_dynamics_option_keys = [
   'wddma_fcl_code',

@@ -292,8 +292,8 @@ if ($country == "HR") {
 
       <!-- Newsletter Subscribers -->
       <?php
-      global $wdd_wpdb;
-      $subscribers = $wdd_wpdb->get_results("SELECT * FROM {$wdd_wpdb->prefix}wddma_subscribers ORDER BY created_at DESC LIMIT 50");
+      global $wpdb;
+      $subscribers = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}wddma_subscribers ORDER BY created_at DESC LIMIT 50");
 
       echo '<div class="postbox" style="margin-top:30px;"><h2 class="hndle" style="margin-left:10px;"><span>' . esc_html__('Pretplatnici na Newsletter', 'wdd-marketing-automation') . '</span></h2><div class="inside">';
 

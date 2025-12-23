@@ -87,7 +87,7 @@ class Rest
 
   public static function subscribe(WP_REST_Request $request): WP_Error|WP_REST_Response
   {
-    global $wdd_wpdb;
+    global $wpdb;
 
     $params = $request->get_json_params();
 
@@ -101,8 +101,8 @@ class Rest
       );
     }
 
-    $table = $wdd_wpdb->prefix . 'wddma_subscribers';
-    $insert = $wdd_wpdb->insert(
+    $table = $wpdb->prefix . 'wddma_subscribers';
+    $insert = $wpdb->insert(
       $table,
       [
         'email'      => $email,

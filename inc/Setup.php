@@ -58,6 +58,17 @@ class Setup
     ]);
   }
 
+  public static function sanitize_text($value): string
+  {
+    return sanitize_textarea_field($value);
+  }
+
+  public static function sanitize_bool($value): int
+  {
+    return $value ? 1 : 0;
+  }
+
+
 
   public static function create_table(): void
   {
