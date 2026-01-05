@@ -1,7 +1,7 @@
 === WDD Marketing Automation ===
 Contributors: ivan117 
 Tags: marketing, automation, popup, banner, newsletter
-Requires at least: 5.0 
+Requires at least: 6.0 
 Tested up to: 6.9 
 Stable tag: 1.0.0 
 Requires PHP: 8.2 
