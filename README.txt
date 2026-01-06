@@ -64,6 +64,26 @@ newsletter subscribers
 3.  Go to WDD Marketing Automation in the admin menu
 4.  Configure settings
 
+== External services ==
+
+This plugin uses the external service ipapi (https://ipapi.co/) to resolve the visitor's country
+from their IP address. This is used to improve marketing automation behavior and defaults.
+
+Data sent:
+- The visitor's IP address when a request is made.
+
+Purpose:
+- To detect the visitor's country so the plugin can apply location-specific behavior.
+
+Links:
+- ipapi Terms of Service: https://ipapi.co/terms/
+- ipapi Privacy Policy: https://ipapi.co/privacy/
+
+== Technical details ==
+
+This plugin uses the "infobipcth/forms-computed-language" library, which
+requires PHP 8.2 or newer. For that reason, this plugin also requires PHP 8.2+.
+
 == Frequently Asked Questions ==
 
 = How often are rules evaluated? = Every 5 seconds in the frontend.
