@@ -12,7 +12,7 @@ class Setup
   public static function register_options(): void
   {
     register_setting('wddma_settings', 'wddma_fcl_code', [
-      'sanitize_callback' => [__CLASS__, 'sanitize_text'],
+      'sanitize_callback' => null,
     ]);
 
     register_setting('wddma_settings', 'wddma_enable_modal', [
