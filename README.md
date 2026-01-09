@@ -177,8 +177,8 @@ No data is sent to external servers (except for country lookup via IP).
 
 ##  Requirements
 
-- WordPress 5.0+
-- PHP 7.4+
+- WordPress 6.0+
+- PHP 8.2+
 - REST API enabled
 - `wp_remote_get()` must be allowed (for country detection)
 
